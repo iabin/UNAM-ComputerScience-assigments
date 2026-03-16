@@ -1,0 +1,327 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{xspace}
+\usepackage[top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{ifsym}
+\usepackage{xspace}
+\usepackage{amsmath}
+\usepackage{stmaryrd}
+
+\title{Facultad de Ciencias. \\Tarea 5 \\ Fundamentos de Bases de             Datos.}
+\author{Arteaga Hernández Alejandro Iabin \and 
+        Barocio Gómez Luis Fernando \and 
+        Ledesma Granados Roberto Andrés \and
+        Castrejón Estrada Juan Carlos}
+\date{Entrega 4 de Mayo 2020}
+
+\begin{document}
+
+\maketitle
+\begin{enumerate}
+    %%%Pregunta 1%%%
+    \item Preguntas de repaso:
+    
+    \begin{itemize}
+    
+        \item Anomalía de inserción: Cuando deseamos agregar datos a una base de datos, pero es imposible hacerlo, debido a la ausencia de otros datos.\\
+        Anomalía de borrado: Se eliminan datos de forma no intencional, debido a que se eliminarion otros datos.
+        \\ Anomalía de actualización: Se presentan incosistencias en los datos, debido a actualizaciones parciales.
+        \item Las dependencias funcionales nos ayudan a definir cuando un diseño de bases de datos es correcto.
+        \\ Es una relación entre dos atributos A y B, de forma que para cada valor único de A, sólo un valor de B se asocia con él a través de ésta relación.
+        \item Uno de los objetivos de la normalización es conservar las dependencias funcionales. Ésto puede servir para acabar con las anomalías de redundancia.
+        \item $A \rightarrow A, A \rightarrow B, A \rightarrow C, A \rightarrow AB, A \rightarrow AC, A \rightarrow BC, A \rightarrow ABC.$
+        \item La normalización es una técnica para diseñar la estructura lógica de una base de datos en el modelo relacional. Para llegar a ésto, existe un proceso en el cual se van comprobando el cumplimiento de una serie de restricciones. Una forma normal consiste en un conjunto de éstas restricciones.
+        \item Es preferible la 3NF cuando no queremos perder nada de información sobre la tabla orignial.
+    \end{itemize}
+     %%%Pregunta 2%%%
+    \item Proporciona algunos ejemplos que demuestren que las siguientes reglas no son válidas:
+    \begin{enumerate}
+        \item Si A $\rightarrow$ B, entonces B $\rightarrow$ A.\\
+        Consideremos la siguiente tabla:\\
+        A    B\\
+        a1   b1\\
+        a2   b2\\
+        a3   b2\\
+        Claramente A $\rightarrow$ B, pues las a's son únicas, pero no es cierto que B $\rightarrow$ A.
+        
+        \item Si AB $\rightarrow$ C, entonces A $\rightarrow$ C y B $\rightarrow$ C.\\
+        Consideremos la siguiente tabla:\\
+        A     B     C\\
+        a1    b1    c1\\
+        a2    b1    c2\\
+        Tenemos que AB $\rightarrow$ C, pero no es cierto que B $\rightarrow$ C.
+        \item Si AB $\rightarrow$ C y A $\rightarrow$ C, entonces B $\rightarrow$ C.\\
+        Consideremos la table del ejemplo anterior. En ella, AB $\rightarrow$ C y A $\rightarrow$ C, pero no es cierto que B $\rightarrow$ C.
+    \end{enumerate}
+
+     %%%Pregunta 3%%%
+    \item Dada una relación $R (A, B, C, D, E, G)$ y el siguiente conjunto de dependencias funcionales $F=${ $AB\rightarrow C, BC \rightarrow D,$\\$ D \rightarrow EG, CG \rightarrow BD, C \rightarrow A, ACD \rightarrow B, BE \rightarrow C, CE \rightarrow AG$}.
+    \begin{enumerate}
+        \item La cerradura de BC es {A, D, E, G}.\\
+        Es falso. En realidad, la cerradura de BC es ABCDEG.\\
+        Por reflexividad y descomposición, tenemos que BC $\rightarrow$ B y C $\rightarrow$ C. Tenemos de forma directa que BC $\rightarrow$ D, y por reflexividad con C tenemos que BC $\rightarrow$ A. Por reflexividad con D y descomposición, tenemos que BC $\rightarrow$ E y BC $\rightarrow$ G.
+        \item Todos los atributos de R están en la cerradura de BC.\\
+        Es cierto. El argumento es el mismo que en el ejercicio anterior.
+        \item La cerradura de AC es {A, C}. Es cierto. No podemos obtener más elementos en la cerradura más que A y C.
+        \item ABC es una superllave de R.
+        \\ Es cierto. Dado que BC es una llave (justificado en el ejercicio (a)), ABC es una superllave de R por contener una llave.
+        \item ABC es una llave candidata de R.
+        \\Esto es falso. ABC no es una superllave mínima, ya que BC es llave y por lo tanto, superllave.
+        \item BC es la única llave candidata de R.\\
+        Esto es falso. Notemos que BE $\rightarrow$ C, y BE $\rightarrow$ B, por lo que BE $\rightarrow$ BC. Y como BC era llave, BE también debe serlo, por lo que BE es otra llave candidata.
+    \end{enumerate}
+    
+    %%%Pregunta 4%%%
+    \item Sean $R (A, B, C, D, E, F, G)$, el conjunto $F = \{ BD \rightarrow A, C \rightarrow D, G \rightarrow C, E \rightarrow FG\}$. Especifica cuáles de las siguientes tuplas podrían estar almacenadas en R y por qué:
+    \begin{itemize}
+        \item (a1, b1, c1, d1, e2, f1, g2): No la podemos agregar. Si lo hacemos, tendríamos dos valores iguales en C (c1) que definen dos valores distintos de D (d1 y d2).
+        \item (a1, b3, c2, d2, e1, f1, g1): No la podemos agregar. Si lo hacemos, tendríamos dos valores iguales en G (g1) que definen dos valores distintos de C (c1 y c2).
+        \item (a1, b2, c3, d1, e4, f2, g3): Si la podemos agregar. No causa conflicto con ninguna de las dependencias funcionales y la tabla R.
+        \item (a1, b1, c2, d2, e2, f1, g2): Si la podemos agregar. No causa conflicto con ninguna de las dependencias funcionales y la tabla R.
+    \end{itemize}
+    
+    %%%Pregunta 5%%%
+    \item Dado el conjunto de dependencias funcionales $F = \{ A \rightarrow DC, BC \rightarrow F, F \rightarrow CH, AF \rightarrow B \} $
+    \begin{itemize}
+        \item Indica alguna llave candidata 
+        
+        $\{A,F\}$
+        
+        \item Encontrar las cerraduras: 
+        
+        $\{AC\}+ = \{ ACD\}$,
+        
+        $\{BA\}+ = \{ ABCDFH\}$, 
+        
+        $\{AF\}+ = \{ ABCDFH\}$ y 
+        
+        $ \{ A \}+ = \{ ADC\}$
+        
+        \item Indicar si las siguientes dependencias funcionales son deducidas o no, justificando tu respuesta:
+        
+        $ AC \rightarrow H$, No se puede porque H solo depende de F y F depende de B y B no
+        depende de AC
+        
+        $BA \rightarrow FC$, si $BA \rightarrow BC->FC$
+        
+        $AF \rightarrow HB$  Si porque $ AF \rightarrow B $ y  $ F \rightarrow CH$
+        
+        $A \rightarrow F$ NO porque A no deriva a BC y es la que deriva a F
+        
+    \end{itemize}
+    
+    
+     %%%Pregunta 6%%%
+    \item Para cada uno de los esquemas que se muestran a continuación:
+    \begin{enumerate}
+        \item $R (A, B, C, D, E)$ con $F = {AB \rightarrow CD, E \rightarrow C, D \rightarrow B}$
+        
+        \item $R (A, B, C, D, E)$ con $F = {AB \rightarrow C, DE \rightarrow C, B \rightarrow D}$
+        
+        \begin{itemize}
+            \item Especifica de ser posible \textbf{dos DF no triviales} que se pueden derivar de las dependencias funcionales dadas
+            
+            a) $AD \rightarrow C$, $AB\rightarrow C$
+            
+            b) $AB \rightarrow CD$, $BE \rightarrow C$
+            
+            \item Indica \textbf{alguna llave candidata} para \textbf{R}
+            $\{E A B\}$
+            \item Especifica \textbf{todas las violaciones} a la \textbf{BCNF}
+            
+            a) Ninguna DF cumple BCNF porque ningún determinante de ninguna Df es superllave
+            
+            b) Ninguna DF cumple BCNF porque ningún determinante de ninguna Df es superllave
+            
+            \item \textbf{Normaliza} de acuerdo a \textbf{BCNF}, asegúrate de indicar cuáles son las relaciones resultantes con sus respectivas dependencias funcionales.
+            
+            \begin{itemize}
+                \item $AD \rightarrow C$, $AB\rightarrow C$
+                
+                $\{AB \}+=\{ABCD\}\times$(Llave por R = ABE)
+                
+                $\{E \}+= \{EC\} \times$
+                
+                $\{D \}+=\{DB\} \times $(Llave por R = ABE)
+                
+                \textbf{S(A,B,C,D)} con $\{AB \rightarrow CD\,D \rightarrow B \}$
+                
+                $\{AB\}+=\{ABCD\}$ por lo tanto AB = llave
+                
+                $\{D \}+={DB} \times$
+                
+                $u=(D,B)$ con $D\rightarrow B$ por lo tanto D = llave, cumple. 
+                
+                $V(D,A,C)$ con $DAC \rightarrow DAC$ por lo tanto $DAC = llave$ tambien cumple.
+                
+                DF es perdida \{$E \rightarrow C$ y $AB \rightarrow CD$ \}(Join con perdida)
+                
+                Por lo tanto BCNF no sirve y esto es 3NF
+                
+                \textbf{T(A,B,E)} con $ABE \rightarrow ABE$ por lo tanto $ABE = llave$
+                
+              
+            \end{itemize}
+            
+            
+        \end{itemize}
+        
+    \end{enumerate}
+    
+    %%%Pregunta 7%%%
+    \item Para cada una de las siguientes relaciones con su respectivo conjunto de dependencias funcionales:
+    \begin{enumerate}
+        \item $R (A, B, C, D, E, F)$ con $F = \{ B \rightarrow D, B \rightarrow E, D \rightarrow F, AB \rightarrow C \}$
+        
+        Calcular conjunto F mínimo:
+        
+        Como $F$ tiene $B \rightarrow D$ y $B \rightarrow E$, aplicamos la regla de la unión y sustituimos estas $DP$ con $B \rightarrow DE$, lo cual nos da $F = \{ B \rightarrow DE, D \rightarrow F, AB \rightarrow C \}$
+        
+        Ahora eliminaremos los atributos superfluos (por la izquierda) de las DP:
+        
+        $AB \rightarrow C \rightarrowtriangle A \rightarrow C:$
+        
+        $\{A\}+ = \{AC\}, B$ no es superfluo
+        
+        $AB \rightarrow C \rightarrowtriangle B \rightarrow C:$
+        
+        $\{B\}+ = \{BDEFC\}, A$ no es superfluo
+        
+        No hay cambios.
+        
+        Ahora por la derecha:
+        
+        $B \rightarrow DE \rightarrowtriangle B \rightarrow D:$
+        
+        $\{B\}+ = \{BDF\}, E$ no es superfluo
+        
+        $B \rightarrow DE \rightarrowtriangle B \rightarrow E:$
+        
+        $\{B\}+ = \{BE\}, D$ no es superfluo
+        
+        No hay cambios.
+
+        $F = \{ B \rightarrow DE, D \rightarrow F, AB \rightarrow C\}$ es un conjunto mínimo.
+        
+        $S(B, D, E), T(D, F), U(A, B, C)$ no son subconjunto entre ellos.
+        
+        La llave candidata $AB (\{AB\}+ = \{ABCDEF\})$ se encuentra en $U$, por lo que terminamos con la normalización, y nos queda:
+        
+        $S(B, D, E), T(D, F), U(A, B, C)$
+
+        
+        \item $R (A, B, C, D, E, G, H)$ con $F = \{C \rightarrow D, A \rightarrow C, AD \rightarrow GBH, B \rightarrow A, BD \rightarrow H\}$ 
+        
+    \end{enumerate}
+    
+
+     \begin{itemize}
+         \item Indica \textbf{alguna llave} para la relación R e indica las \textbf{violaciones} a \textbf{3NF} que encuentres en F
+         
+            $\{A\}$ es llave primaria.
+            
+            $C \rightarrow D$ Viola 3FN porque no está la llave A,
+            De igual manera $ BD \rightarrow H$
+         
+         \item Encuentra el \textbf{conjunto mínimo} de dependencias funcionales equivalente a F.
+        se calcularon los atributos superfluos por la izquierda 
+        
+         $ C \rightarrow D$
+         
+         $A \rightarrow C$
+         
+         $A \rightarrow GBH $
+         
+         $B \rightarrow A$
+         
+         $B \rightarrow H $
+         
+         ahora por la derecha
+         
+         $ C \rightarrow D$
+         
+         $A \rightarrow C$
+         
+         $A \rightarrow GB$
+         
+         $B \rightarrow A$
+         
+         $B \rightarrow H $
+
+         
+         \item \textbf{Normaliza} de acuerdo a la \textbf{3NF}. Indica claramente las relaciones resultantes y en cada esquema, las dependencias funcionales que se cumplen.
+
+         
+        R1(C, D) $ C \rightarrow D$
+         
+        R2(A, C) $A \rightarrow C$
+         
+        R3(A, G, B) $A \rightarrow GB $
+         
+        R4(B, A) $B \rightarrow A $
+        
+        R5(B, H) $B \rightarrow H $
+         
+        
+    \end{itemize}
+    
+    
+    %%%Pregunta 8%%%
+    \item Sea el esquema:
+    
+    $R (A, B, C, D, E, F)$ con $F = \{ BD \rightarrow E, CD \rightarrow A, E \rightarrow C, B \rightarrow D \}$
+    
+    \begin{itemize}
+        \item ¿Qué puedes decir de $\{A\}+$ y $\{F\}+$?
+        
+        $\{A\}+ =  \{A\}$ y $\{F\}+ = \{F\}$ Porque ninguna entidad depende funcionalmente
+        de ellas.
+        
+        \item Calcula $\{B\}+$, ¿qué puedes decir de esta cerradura?
+
+        $\{B\}+ =  \{A, B, C, D, E\}$ No es una llave porque F no depende funcionalmente  
+        
+        \item Obtén todas las \textbf{llaves candidatas}.
+        
+        $\{B, F \}$ es una llave mínima porque son los únicos atributos que no dependen, funcionalmente de ningún otro.
+        
+        \item ¿R cumple con \textbf{BCNF}? ¿Cumple con \textbf{3NF}? (en caso contrario normaliza)
+        
+        No cumple ninguna de las 2, porque la llave no aparece en ninguna dependencia funcional
+        
+        Normalizaremos a 3FN, primero encontraremos el junto mínimo.
+        $B  \rightarrow E$
+        
+        $CD  \rightarrow A$
+        
+        $E  \rightarrow C$
+        
+        $B  \rightarrow D$
+        
+        Crearemos una tabla para cada df minimizada
+        
+        R1(B, E) $B  \rightarrow E$
+        
+        R2(C, D, A) $CD  \rightarrow A$
+        
+        R3(E, C) $E  \rightarrow C$
+        
+        R4(B, D) $B  \rightarrow D$
+        
+        Y como la llave no está en ninguna de las relaciones se agrega la relación
+        
+        R5(B, F)
+        
+        \item Se ha decidido dividir \textbf{R} en las siguientes relaciones $S (A, B, C, D, F)$ y $T (C, E)$, ¿se puede recuperar la información de \textbf{R}?
+        
+        No, la dependencia funcional $ BD \rightarrow E$ se perdería.
+
+    \end{itemize}
+    
+\end{enumerate}
+
+\end{document}

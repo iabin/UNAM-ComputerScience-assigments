@@ -1,0 +1,156 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathpazo}      % Palatino-like font
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+% ----- Basic typography -----
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.8em}
+\linespread{1.05}
+
+% ----- Colors -----
+\definecolor{hpcblue}{HTML}{003A70}
+\definecolor{hpclight}{gray}{0.35}
+
+% ----- Section styles -----
+\titleformat{\section}
+  {\Large\bfseries\color{hpcblue}}{}{0pt}{}
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{hpcblue}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.8em}{0.7em}
+\titlespacing*{\subsection}{0pt}{1.2em}{0.5em}
+
+% ----- Links (not really needed but nice to have) -----
+\hypersetup{
+  colorlinks=true,
+  linkcolor=hpcblue,
+  urlcolor=hpcblue
+}
+
+\begin{document}
+
+{\LARGE\bfseries\color{hpcblue} What is high-performance computing (HPC)?}
+
+\vspace{0.8em}
+
+HPC is a technology that uses clusters of powerful processors that work in parallel to process massive, multidimensional data sets and solve complex problems at extremely high speeds.
+
+HPC solves some of today's most complex computing problems in real-time. HPC systems typically run at speeds more than one million times faster than the fastest commodity desktop, laptop or server systems.
+
+Supercomputers, purpose-built computers that embody millions of processors or processor cores, have been vital in high-performance computing for decades. Unlike mainframes, supercomputers are much faster and can run billions of floating-point operations in one second.
+
+Supercomputers are still with us; the fastest supercomputer is the US-based Frontier, with a processing speed of 1.206 exaflops or quintillion floating point operations per second (flops).1 But today, more organizations are running HPC services on clusters of high-speed computer servers hosted on premises or in the cloud.
+
+HPC workloads uncover new insights that advance human knowledge and create significant competitive advantages. For example, HPC sequences DNA and automates stock trading. It runs artificial intelligence (AI) algorithms and simulations—like those enabling self-driving automobiles—that analyze terabytes of data streaming from IoT sensors, radar and GPS systems in real-time to make split-second decisions.
+
+% ================================
+\section{How does HPC work?}
+% ================================
+
+A standard computing system solves problems primarily by using serial computing. It divides the workload into a sequence of tasks and then runs the tasks one after the other on the same processor.
+
+\subsection{Massively parallel computing}
+
+Parallel computing runs multiple tasks simultaneously on numerous computer servers or processors. HPC uses massively parallel computing, which uses tens of thousands to millions of processors or processor cores.
+
+\subsection{Computer clusters (also called HPC clusters)}
+
+An HPC cluster comprises multiple high-speed computer servers networked with a centralized scheduler that manages the parallel computing workload. The computers, called nodes, use either high-performance multi-core CPUs or—more likely today—GPUs, which are well suited for rigorous mathematical calculations, machine learning (ML) models and graphics-intensive tasks. A single HPC cluster can include 100{,}000 or more nodes.
+
+Linux is the most widely used operating system for running HPC clusters. Other operating systems include Windows, Ubuntu and Unix.
+
+\subsection{High-performance components}
+
+All the other computing resources in an HPC cluster—such as networking, memory, storage and file systems—are high speed and high throughput. They are also low-latency components that can keep pace with the nodes and optimize the computing power and performance of the cluster.
+
+\subsection{Message passing interface (MPI)}
+
+HPC workloads rely on a message passing interface (MPI), a standard library and protocol for parallel computer programming that allows users to communicate between nodes in a cluster or across a network.
+
+% ================================
+\section{HPC versus quantum computing}
+% ================================
+
+High-performance computing (HPC) relies on conventional bits and processors used in classical computing. In contrast, quantum computing uses specialized technology-based quantum mechanics to solve complex problems. Quantum algorithms create multidimensional computational spaces that are a much more efficient way of solving complex problems—like simulating how molecules behave—that classic computers or supercomputers can't solve quickly enough. Quantum computing is not expected to replace HPC anytime soon. Rather, the two technologies can be combined to achieve efficiency and optimal performance.
+
+% ================================
+\section{HPC and cloud computing}
+% ================================
+
+As recently as a decade ago, the high cost of HPC, which involved owning or leasing a supercomputer or building and hosting an HPC cluster in an on-premises data center, put it out of reach for most organizations.
+
+Today, HPC in the cloud—sometimes called HPC as a service or HPCaaS—offers a significantly faster, more scalable and more affordable way for companies to take advantage of HPC. HPCaaS typically includes access to HPC clusters and infrastructure hosted in a cloud service provider's data center, network capabilities (such as AI and data analytics) and HPC expertise.
+
+Today, three converging trends drive HPC in the cloud.
+
+\subsection{Surging demand}
+
+Organizations across all industries increasingly depend on the real-time insights and competitive advantage of using HPC applications to solve complex problems. For example, credit card fraud detection—something we all rely on and most have experienced at one time or another—relies increasingly on HPC to identify fraud faster and reduce annoying false positives, even as fraud activity expands and fraudsters' tactics change constantly.
+
+Since the launch of technologies like ChatGPT, organizations have rapidly embraced the promise of generative AI (gen AI) to accelerate innovation and foster growth. This development has spurred an even greater demand for high-performance computing. HPC provides the high computational power and scalability to support large-scale AI-driven workloads. In a report from Intersect 360 Research, the total worldwide market for scalable computing infrastructure for HPC and AI was USD 85.7 billion in 2023, up 62.4\% year-over-year, due predominantly to a near tripling of spending by hyperscale companies on their AI infrastructure.2
+
+\subsection{Prevalence of lower-latency, higher-throughput RDMA networking}
+
+Remote direct memory access (RDMA) enables one networked computer to access another networked computer's memory without involving either computer's operating system or interrupting either computer's processing. This helps minimize latency and maximize throughput, reducing memory bandwidth bottlenecks. Emerging high-performance RDMA fabrics—including InfiniBand, virtual interface architecture and RDMA over converged Ethernet—make cloud-based HPC possible.
+
+\subsection{Widespread public-cloud and private-cloud HPCaaS availability}
+
+Today, every leading public cloud service provider, including Amazon Web Services (AWS), Microsoft Azure, Google Cloud and IBM Cloud®, offers HPC services. While some organizations continue to run highly regulated or sensitive HPC workloads on-premises, many are adopting or migrating to private-cloud HPC services provided by hardware and solution vendors.
+
+% ================================
+\section{Benefits of HPC in the cloud}
+% ================================
+
+HPC in the cloud allows organizations to apply many compute assets to solve complex problems and provides the following benefits:
+
+\begin{itemize}
+  \item Quickly configure and deploy intensive workloads.
+  \item Reduce time to results through scaling with on-demand capacity.
+  \item Gain cost-efficiency by harnessing technology to meet your needs and pay only for the compute power you use.
+  \item Use cloud provider management tools and support to architect your specific HPC workloads.
+\end{itemize}
+
+% ================================
+\section{HPC use cases}
+% ================================
+
+HPC applications have become synonymous with AI, particularly machine learning (ML) and deep learning apps. Today, most HPC systems are designed with these workloads in mind.
+
+From data analysis to cutting-edge research, HPC is driving continuous innovation in use cases across the following industries:
+
+\subsection{Healthcare, genomics and life sciences}
+
+The first attempt to sequence a human genome took 13 years; today, HPC systems can do the job in less than a day. Other HPC applications in healthcare and life sciences include medical record management, drug discovery and design, rapid cancer diagnosis and molecular modeling. HPC visualization helps scientists gather insights from simulations and quickly analyze data.
+
+\subsection{Media and entertainment}
+
+HPC clusters provide the high-speed required to stream live events, render 3D graphics and special effects and reduce production time and costs. It can also help media companies gain data-driven insights to achieve better content creation and distribution.
+
+\subsection{Banking and financial services}
+
+In addition to automated trading and fraud detection, HPC powers applications in Monte Carlo simulation and other risk analysis methods.
+
+\subsection{Government and defense}
+
+Two growing HPC use cases in this area are weather forecasting and climate modeling, both of which involve processing vast amounts of historical meteorological data and millions of daily changes in climate-related data points. Other government and defense applications include energy research and intelligence work.
+
+\subsection{Energy}
+
+In cases that sometimes overlap with government and defense, energy-related HPC applications include seismic data processing, reservoir simulation and modeling, geospatial analytics, wind simulation and terrain mapping.
+
+\subsection{Automotive industry}
+
+The automotive industry uses HPC to simulate and optimize the design of products and processes. For instance, HPC can run computational fluid dynamics (CFD) applications, which analyze and solve challenges related to fluid flows. This includes simulating aerodynamics to reduce air drag and friction and enabling battery simulation to optimize battery performance and safety.
+
+\subsection{Cybersecurity}
+
+HPC can analyze large amounts of data to identify patterns to help prevent cyberattacks or other security threats.
+
+\end{document}

@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}% http://ctan.org/pkg/listings
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
+\title{Tarea 1 Computación distribuida}
+\author{Arteaga Hernández Alejandro Iabin \\
+Olea Olvera Marco}
+\date{Agosto 2019}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+El problema de broadcast consiste en diseñar un algoritmo que permita a un nodo notable $p_a$ diseminar información a todo el conjunto de nodos, mientras que el problema de convergecast es el inverso, un algoritmo para que n procesos envíen n mensajes a $p_a$.
+
+
+\section{}
+Sea $\{m_1, ..., m_n\}$ el conjunto de los $n$ mensajes que desea enviar $P_s$. Cada mensaje se puede identificar con un número secuencial $num^s_i$, por lo que cada mensaje enviado por $P_s$ se puede identificar con un par ordenado $(s, num^s_l)$, $l \in \{1, ..., n\}$.
+
+Lo siguiente es una descripción de lo que debe hacer un nodo $P_i$ al recibir un par ordenado $(s, num^s_l)$ de un nodo $P_k$: \\ \\
+\textbf{when} $(s, num^s_l)$ is received from \textit{$P_k$} \textbf{do} \\
+(1) \textbf{if} (first reception of $(s, num^s_l)$) \textbf{then} \\
+(2) \textbf{for each} $j \in neighbors$ \textbackslash $\{k\}$ \textbf{do} send $(s, num^s_l)$ to $P_j$ \textbf{end for} \\
+(3) \textbf{end if} \\
+
+El algoritmo modificado consiste en que $P_s$ se envía a sí mismo $(s, num^s_l)$ para todo $l \in \{1, ..., n\}$. Cuando un nodo recibe algún par ordenado por primera vez, se lo envía a todos sus vecinos excepto el nodo del que recibió ese par. Cada nodo requiere del uso de una estructura para recordar los pares recibidos.
+
+\section{}
+El algoritmo modificado lo que hace es ejecutar el algoritmo de flooding $n$ veces donde $n$ es el número de mensajes que quiere enviar $P_s$.
+\\\\
+Como el algoritmo de flooding  puede enviar hasta $2e-|neighbors_s|$ mensajes, donde  $e$ es el numero de canales o aristas de la red y $neighbors_s$ es el conjunto de vecinos de $P_s$, el algoritmo de la pregunta 2 puede enviar hasta\\ $n(2e-|neighbors|)$ mensajes.
+
+\section{}
+Descripción de lo que hace un nodo $P_i$ al recibir un par ordenado (s, dist) como mensaje de $P_k$:\\
+\begin{lstlisting}
+when (s, dist) is received from $P_k$ do:
+     if (is first reception of s) then:
+        for each $j \in neighbors_i$\$\{k\}$
+            do send(s, dist+1) to $P_j$
+    end if
+\end{lstlisting}
+
+
+El algoritmo consiste en que la raiz $P_s$ se envía a sí mismo el mensaje (s, 0)\\
+Cuando un nodo recibe un par (s, dist) por primera vez, donde s es el identificador de la raiz y dist un entero, le envía (s, dist+1) a todos sus vecinos excepto del que lo recibió. El entero dist que recibió es la distancia del nodo a $P_s$.
+    
+\end{document}

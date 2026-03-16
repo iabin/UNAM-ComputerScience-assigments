@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{tarea 3}
+\author{iabin Arteaga}
+\date{October 2017}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\section{4.1}
+Vamos a suponer que las funciones, suma y producto de naturales son equivalentes en ambos lenguajes
+\\Por Demostrar que ambas expresiones son equivalentes\\
+
+Lo demostraremos por inducción.\\\\
+Caso base
+\\$n = 0$
+\\Cuando ejecutamos f(0)=1 y g(0)=1 , en ambas funciones es trivial ver que $1 = 1$ y son iguales\\
+\\
+Caso inductivo\\
+Suponemos que para n , las expresiones son equivalentes, osea que ouput() de ambos programas con n son equivalentes\\\\
+Por Demostrar  f(n+1) es equivalente a g(n+1)\\
+\\La salida de ambos programas es (n+1)*factorial(n), pero las operaciones suma y producto son equivalentes en ambos lenguajes
+además, por hipótesis de inducción, f(n)  y g(n) son equivalentes, por lo tanto,  $(n+1)*factorial(n)= (n+1)*factorial(n)$ en ambos lenguajes
+\\YA
+
+\section{4.2}
+Sean L1 y L2 lenguajes Turing-completos\\
+Sea E1 una expresión sobre L1\\
+Sea P1 programa que contenga esta expresión. \\\\
+
+Por definición, existe una función f que recibe un programa P sobre un lenguaje Turing-completo y devuelve una máquina de turing M equivalente
+\\Pero como L2 es turing completo, puede modelar cualquier máquina de turing, en especial la máquina M , \\sea L2 de evaluación perezosa.
+Entonces existe un programa P2 en L2 tal que modela la máquina M\\\\
+YA
+
+\section{4.3}
+Sea F la función principal tal que el programa P1 es equivalente a F\\
+Sean h1,h2...,hn funciones diferentes a F, h1(i)= a, h2(j) = b...,hn(k) = z tal que los parametros de F sean $hi$  $ \forall i <n+1$ donde n es el número de parametros de F\\
+\\La diferencia entre evaluaciones es que la función F
+cargaría hi(j) sería evaluación perezosa,mientras que la evaluación glotona cargaría a 'a' en el cuerpo,
+pero SPDG $hi(j) = a $\\
+Pero como hi es parámetro de F, por lo tanto tiene que evaluarse, así que no afecta en la evaluación de la función principal\\
+Por lo tanto no afecta.\\ \\
+YA
+
+\section{Turing completez}
+Debemos de probar que nuestro lenguaje puede modelar las  funciones $μ-recursivas$, funciones de los naturales a los naturales\\
+1.-función constante $f(x1,x2...,xn) = k$ para toda n y k naturales
+\\2.-función sucesor, creo que es obvia.
+\\3.-Función de proyección, para  $P(x1,x2...,xk)=xi$  $0<i<k+1$
+\\4.- Operador de sustición, es el with claramente\\
+5.-Operador de recursión, el cual es obvio que tiene FWAE
+\\6.-Operador de minimización, esta es la que puede causar problemas, porque necesitas poder definir condicionales,
+para que puedas definir funciones que regresen 0 y generar casos base, para asegurar de que la función termine.\\
+Por lo visto en clase, se vió que FWAE tiene condicionales, con esto es el último punto, y FWAE es turing completo
+
+\end{document}

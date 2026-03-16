@@ -1,0 +1,213 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage[section]{placeins}
+\usepackage[table,xcdraw]{xcolor}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\title{Tarea 1: Conceptos Básicos}
+\author{Alejandro Iabin Arteaga Hernández 
+\and
+Barocio Gómez Luis Fernando}
+
+\date{Febrero 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Conceptos generales}
+\subsection{}
+
+\begin{table}[!htb]
+\begin{tabular}{|l|l|}
+\hline
+\rowcolor[HTML]{FFCE93} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{FFCE93}\textbf{Procesamiento de archivos}}                                                                    & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCE93}\textbf{Base de datos relacional}}                                                                         \\ \hline
+\begin{tabular}[c]{@{}l@{}}Los datos se guardan y representan\\ como texto plano\end{tabular}                                                       & \begin{tabular}[c]{@{}l@{}}Los datos se representan según un tipo\\  definido en la estructura de la tabla\end{tabular}                                \\ \hline
+\begin{tabular}[c]{@{}l@{}}La estructura de la información\\ depende totalmente del programador\end{tabular}                                        & \begin{tabular}[c]{@{}l@{}}La estructura de la información \\ es haciendo uso de tablas y relaciones\end{tabular}                                      \\ \hline
+\begin{tabular}[c]{@{}l@{}}El tamaño máximo de archivo está \\ limitado por el sistema operativo\end{tabular}                                       & \begin{tabular}[c]{@{}l@{}}No hay limitaciones lógicas respecto al\\ tamaño máximo de un dato o una tabla\end{tabular}                                 \\ \hline
+\begin{tabular}[c]{@{}l@{}}Los datos son separados por \\ delimitadores, como pueden \\ ser espacios o comas.\end{tabular}                          & \begin{tabular}[c]{@{}l@{}}Los campos están separados por \\ columnas\end{tabular}                                                                     \\ \hline
+\begin{tabular}[c]{@{}l@{}}Los datos tienen libertad operacional, \\ se puede hacer lo que quieras con ellos.\end{tabular}                          & \begin{tabular}[c]{@{}l@{}}Los datos están almacenados en una\\ estructura lógica rígida y solo se pueden\\ hacer operaciones permitidas.\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}No está protegido contra ninguna\\ acción y la integridad de los datos\\ depende totalmente del programador\end{tabular} & \begin{tabular}[c]{@{}l@{}}Tienen protocolos que aseguran la \\ integridad de los datos.\end{tabular}                                                  \\ \hline
+\end{tabular}
+\end{table}
+\subsection{}
+\begin{itemize}
+    \item Ventajas
+    \begin{itemize}
+        \item Permiten concurrencia en el manejo y consulta de los datos.
+        \item Proporcionan una estructura de seguridad de los datos muy fuerte.
+        \item Permiten un manejo colosal de datos, con volúmenes inmensos de datos.
+        \item Son escalables y flexibles para ser adaptadas, si están bien hechas.
+        \item Proveen una infraestructura de herramientas, para el manejo de datos.
+        \item Proveen una forma organizada y concisa para el manejo de datos.
+        \item Han sido utilizadas durante décadas y perfeccionadas con el paso del tiempo. 
+    \end{itemize}
+    \item Desventajas
+    \begin{itemize}
+        \item Requieren un conocimiento especializado, por lo que los su implementación es costosa para las organizaciones. 
+        \item Son más tardadas de implementar que un sistema de archivos simple o que una hoja de cálculo.
+        \item Tienen una estructura demasiado rígida para la resolución de ciertos problemas.
+        \item Solo son rentables a partir de cierto volumen de datos, para casos más pequeños, pueden resultar menos provechosas que una hoja de cálculo.
+        \item Debido a su complejidad técnica, una base de datos mal hecha, puede ser un dolor de cabeza para la organización.  
+    \end{itemize}
+\end{itemize}
+\subsection{}
+\begin{itemize}
+    \item DBA\\
+    \begin{itemize}
+        \item Los administradores de bases de datos gestionan y mantienen las bases de datos.
+        \item Analizar y reportar datos corporativos que ayuden a la toma de decisiones en la inteligencia de negocios.
+        \item Se aseguran de que estas sean seguras y estén actualizadas. \item Trabajan sobre las formas de reorganizar las bases de datos para hacerlas más rápidas o más fáciles de usar.
+        \item Garantizar la seguridad de las bases de datos, realizar copias de seguridad y llevar a cabo la recuperación de desastres.
+        \item Además de encargarse también de la administración de usuarios para la base de datos.
+        
+    \end{itemize}
+    
+    \item Diseñador de bases de datos
+    \begin{itemize}
+        \item Implementar, dar soporte y gestionar bases de datos corporativas.
+        \item Crear y configurar bases de datos relacionales.
+        \item Diseñar, desplegar y monitorizar servidores de bases de datos.
+        \item Diseñar la distribución de los datos y las soluciones de almacenamiento.
+        \item Diseñar planes de contingencia.
+        \item Diseñar y crear las bases de datos corporativas de soluciones avanzadas.
+        \item Producir diagramas de entidades relacionales y diagramas de flujos de datos, normalización esquemática, localización lógica y física de bases de datos y parámetros de tablas.
+    \end{itemize}
+\end{itemize}
+\subsection{}
+\begin{itemize}
+    \item Usuario normales(cajeros, agentes, usuarios web)\\
+    Son usuarios que interactúan con la base de datos a través de una interfaz o una aplicación. Hacen modificaciones o consultas pequeñas(No mueven grandes volúmenes de datos),
+    ya que generalmente están asociadas a usuarios físicos.
+    \item Programadores de aplicaciones\\
+    Son los programadores que programan esas aplicaciones o esas interfaces, ellos suelen tener contacto directo con el SMBD y se encargan de automatizar procesos para los usuarios normales.
+    
+    \item Usuarios sofisticados\\
+    Son usuarios que se encargan de generar reportes o analizar grandes volúmenes de datos, para la toma de decisiones de la organización,
+    pueden mover grandes volúmenes de información usando diversas técnicas, pero todo con el fin de obtener conocimiento. 
+    \item Administrador de bases de datos\\
+    Es aquel que se encarga de administrar el nivel de acceso de los demás usuarios, se encarga de mantener la base y los servidores, además de proteger los datos en caso de alguna falla.
+\end{itemize}
+\subsection{}
+En el nivel físico(interno), solo se maneja una sola descripción física, el esquema interno, se refiere a la parte física de las operaciones, el tamaño de la página, los índices etc, mientras que el nivel conceptual maneja una descripción lógica de la base de datos, no se preocupa de de la parte física de los datos, solo de la conceptual, pero a nivel global, para toda la base de datos, y la externa, es ese nivel al que acceden los usuario, que son vistas predefinidas, que no les permiten ver el estado completo de la base de datos.
+\\\par
+La independencia física busca que los cambios de organización física no afecten al mundo exterior, y la independencia lógica busca que los cambios en el nivel conceptual no afecten al nivel externo.\\
+Se relacionan debido a que para lograr una buena independencia física y lógica es importante comprender los niveles.
+\subsection{}
+\begin{enumerate}
+    \item Análisis de requerimientos
+    \item Diseño de la base de datos
+    \item Evaluación y selección
+    \item Diseño del esquema lógico 
+    \item Diseño físico de la base de datos
+    \item Implementación
+    \item Poblar la base de datos
+    \item Pruebas de de funcionamiento y desempeño
+    \item operación y mantenimiento
+    \item Crecimiento y actualización 
+\end{enumerate}
+\subsection{}
+El diccionario de datos o repositorio de
+meta-datos es un “repositorio centralizado de información acerca de información acerca de
+los mismos datos de una base de datos, como lo son significado, relaciones, con otros datos,
+origen, uso y formato”. En otras palabras el diccionario de datos almacena datos sobre los datos de la base
+de datos.
+\\\par
+
+El diccionario de datos es importante ya que es necesario para conocer la estructura de los datos, el significado de esos datos, y su organización.
+De esta manera podemos establecer la estructura de la base de datos de una manera correcta, ya que podemos empatar tipos de datos correctos en las relaciones.
+\\\par También es importante ya que el SMBD consulta el diccionario de datos antes de consultar o modificar
+datos, así manteniendo la integridad de la base de datos.
+\subsection{}
+\begin{itemize}
+    \item Modelo relacional (70s). Los datos se perciben como tabla y sólo hay
+    tablas. Es un sistema cerrado en el sentido de que el resultado de las operaciones son siempre tablas.\\\par 
+    Las diferencias que hay con los demás modelos, es que los tipos básicos de este modelo son relaciones, representados como tablas, estas tablas son rígidas en su estructura y no permiten que las tuplas de cada relación cambien una vez definida la estructura.
+    \item  Modelo de objetos. Los datos se modelan como objetos en los cuales, además del estado se tiene modelado su comportamiento.\\\par 
+    Su principal diferencia es que hacen un modelado completo de la orientación a objetos. en vez de tener tuplas como en el relacional, tenemos objetos con su propio estado y comportamiento. Al igual que la POO tradicional, la estructura de los objetos es inalterable una vez definida.
+    
+    \item  Modelo de datos semi estructurado. Los datos no tienen una estructura rígida y mucho menos predefinida. Es una colección de nodos, donde cada nodo tiene datos con diferentes esquemas (bases de datos XML).\\\par
+    Es un esquema que en estos últimos años se ha vuelto muy popular, porque responde a las nuevas tendencias de evitar la rigidez de las estructuras. Y también otorgan rapidez, ya que el SMBD evita hacer las comprobaciones estructurales que tiene que hacer en los otros modelos, relegando muchas responsabilidades al programador.
+    \item  Modelo Objeto-Relacional: La base de datos objeto-relacional es una extensión de la base de datos relacional tradicional, a la cual se le proporcionan características de la programación orientada a objetos (POO).
+    \\\par 
+    Es una mezcla de los dos modelos más famosos, aunque sigue siendo rígido, es en la base un modelo relacional, con algunas características específicas de la POO.
+    \end{itemize}
+    \subsection{}
+    \begin{itemize}
+        \item \textbf{Seguridad}
+        \\Los datos pueden ser sumamente valiosos y no protegerlos podría imponer problemas a niveles catastróficos, para las instituciones, las empresas o el mundo. Además con las nuevas clausulas de privacidad que se imponen en el mundo, cada vez es más importante poder asegurar la seguridad de los datos.
+        \item\textbf{Control de concurrencia}
+        \\El mundo actual depende de la concurrencia, el gran proceso de automatización que estamos viviendo en estos últimos años, es debido en gran medida al aumento exponencial de usuarios que las organizaciones están presenciando, por ello es cada vez más común que incluso aquellas organizaciones más pequeñas, cada vez vivan con un número creciente peticiones simultaneas a servicios, lo cual deriva en un gran número de peticiones simultaneas a los datos. Por ello, asegurar un correcto control de concurrencia es cada vez más importante.\\
+        \item \textbf{Recuperación en caso de fallas}
+        \\En los últimos años, prácticamente la automatización de todos los sectores se ha hecho inevitable, por ello incluso aquellas actividades de máximo cuidado, y debido a esto es esencial que los sistemas críticos puedan recuperarse a fallas, puede ser que el sistema de ventas sea crítico para una empresa, no tiene que ser algo crítico de alto nivel, puede ser algo pequeño pero importante para una corporación .\\
+        \item\textbf{Lenguaje de consulta} \\
+        Debido a lo complejo que se vuelven las bases de datos, debido al masivo flujo de datos. El lenguaje de consulta debe ser suficientemente rápido para contestar las peticiones, además de ser accesible para los DBA ya que son profesionistas muy caros, es preferible tener un SMBD con un lenguaje rápido de aprender y ejecutar a uno demasiado complejo.\\
+        \item\textbf{ Mecanismo de vistas} \\
+        A veces los conceptos más técnicos como es el encapsulamiento, llegan a las organizaciones ya que provee ciertas cosas, en este caso, queremos que para que los distintos miembros de la organización tengan acceso a la información que ellos necesitan, es por eso que necesitamos un mecanismo para ofrecerles lo que necesitan, y nada más.\\
+        \item\textbf{Manejo de transacciones}\\
+        Al ser tan importantes los datos, queremos que estos se hagan en el orden que nosotros hemos establecido y que además por fallas internas no haya daño a la integridad de los datos, por ello es que las transacciones deben ser manejadas perfectamente, además de que deben de ser rápidas.
+    \end{itemize}
+    \subsection{}
+    \begin{itemize}
+        \item \textbf{Seguridad}
+        \\ La seguridad es importante ya que si los hackean y consiguen la información de un cliente, este podría demandarlos. Además una tienda rival podría obtener los correos de sus clientes y ofrecerles mejores promociones.
+        \item\textbf{Control de concurrencia}
+        \\No es necesaria ya que solo un usuario tendrá acceso simultaneo
+        \item \textbf{Recuperación en caso de fallas}
+        \\Es muy importante, ya que toda su información de sus clientes y de sus actividades económicas se encuentra ahí.
+        \item\textbf{Lenguaje de consulta} \\
+       Es importante ya que un lenguaje de consulta complicado, podría aumentar los costos de uso de la base de datos y quebrar a la compañía.
+        \item\textbf{ Mecanismo de vistas} \\
+       No es importante ya que solo habrá un usuario.
+        \item\textbf{Manejo de transacciones}\\
+       Es importante que las transacciones sean realizadas correctamente, esto puede afectar a las decisiones del negocio.
+    \end{itemize}
+
+\section{Lectura}
+\subsection{Initial Data conversion}
+Esta causa introduce el problema de la conversión de datos inicial, el autor nos cuenta que cuando se implementa una nueva base de datos, esta base de datos no suele nacer vacía, generalmente hay algún conjunto de datos viejo que hay que transformar y almacenar en esta nueva base de datos. \medbreak
+Esto es especialmente problemático debido a que muchas veces el código puede venir mal documentado, muchas veces la información no viene etiquetada a que se hace referencia y la mayoría de las veces se pierde información en la conversión.\medbreak
+    Así nos cuenta una experiencia que hace referencia a cuando creo una nueva base de datos para una empresa de pensiones. descifrar el cálculo hecho por el anterior diseñador de la base de datos con los datos dados, les llevó 8 veces más de lo que tenían previsto.
+\subsection{System consolidations}
+La adquisición de una compañía por otra, es una de las cosas más complejas, debido a que vienen con muchos problemas, el primero es el choque de ambos departamentos de IT, los cuales cada uno tiene su propia filosofía e inevitablemente viene acompañado con renuncias despidos, que provocan perdida de expertise, además de una presión incesante por el tiempo, en este tipo de mezclas, siempre hay un sistema ganador, aquel que tendrá prioridad cuando los datos se sobrepongan o simplemente haya que decidir, también se pueden hacer un sistema más parejo, pero eso siempre depende de la destreza de nuestros programadores. \medbreak
+Otro de los problemas dados a esto, es que pasa el problema explicado arriba, se suele comenzar sobre una base de datos que no está vacía y que trae los problemas descritos anteriormente.
+\subsection{Manual Data Entry}
+A pesar de la gran automatización, muchas veces los datos son ingresados por personas, la forma mas fácil de error es que la persona se equivoque en la ortografía.\medbreak
+El autor nos cuenta una experiencia donde a pesar de buscar una traducción limpia de los datos, el 3\% de los datos fue escrito incorrectamente. \medbreak
+A pesar de que a veces intentemos que todas las entradas estén etiquetadas y de la forma más clara posible, los errores en la entrada de los datos, siempre va a causar problemas.
+\subsection{Batch Feeds}
+El principal problema, es que el intercambio de información entre bases de datos no es un continuo, suele ser ejecutado por bloques, muchas veces estos bloques están desactualizados, ya que pueden ser transferidos a la mitad de una operación, lo que hace una serie en cadena de errores lógicos en las operaciones.
+\subsection{Real Time Interfaces}
+Las interfaces en tiempo real, son unas de las maravillas del mundo tecnológico moderno, el autor se imagina las autopiestas con millones de datos volando.\medbreak
+Debido a que las bases de datos deben responder tan rápido, no hay tiempo para verificar los datos, y muchos de estos pueden ser muy erroneos, pero es el precio a pagar. 
+\subsection{Data Processing}
+Muchas veces a pesar de que el procesamiento de datos, suele ser una tarea repetitiva, una pequeña variación en los datos, puede dar resultados incorrectos, igualmente un pequeño bug, en un pequeño dato, puede repetirse millones de veces, y causar un gran destrozo.
+\subsection{Data Cleaning}
+Este problema realmente se divide en muchos, y es debido a que la información viene sucia en formas muy complejas, lo que produce que muchas veces al limpiarla produzcas mas problemas.\medbreak
+Los algoritmos de limpieza a menudo son complejos y poco entendidos, lo que genera que haya riesgo en la información.
+\subsection{Data Purging}
+Ya que purgar significa destruir, hay un riesgo muy visible que es la perdida de información, puede que alguna información útil se vaya en los criterios de eliminación, así que debemos ser cuidadosos.
+\subsection{Changes not captured}
+La información solo es valiosa cuando describe al mundo real, cuando los cambios no son avisados, la información decae y es una de las maneras más fáciles de deteriorar información.
+\subsection{System Upgrades}
+Aunque las actualizaciones no son tan invasivas como las adquisiciones o las conversiones, muchas veces actualizar requiere grandes reestructuraciones que ponen en peligro a los datos.
+\subsection{New data uses}
+Muchas veces alguna información es muy buena para ciertos usos, pero para otros no, ya que puede aumentar el impacto de algunos datos erroneos que no fueron importantes en el pasado y que ahora deben ser solucionados.
+\subsection{Loss of Expertise}
+Pérdida de personal capacitado, muchas veces la forma de funcionamiento o el significado de ciertos datos, solo vive en la memoria de nuestro experto, y cuando el se va, deja un vacío que produce pérdida de información.
+\subsection{Process Automation}
+La automatización ciertas veces trae problemas en tareas que realizaban las personas, las personas pueden validar que la información tenga sentido, las computadoras hacen lo que pueden con lo que tienen, así que muchas cosas que no sean introducidas correctamente, sus resultados pueden verse deteriorados.
+
+\subsection{Conclusión}
+Aquellas que yo siento que deben prestarse más atención, es la pérdida de expertise, debido a que es aquel que te permite solucionar todos los demás problemas, y sobretodo la initial data conversion, ya que si se inicia mal, las cosas saldrán mal.
+\medbreak
+Mi recomendación es que si se mantienen limpios los datos desde que se introducen al sistema y son manejados con cuidado, podremos asegurar una gran calidad de nuestros datos y esto nos evitará la mayoría de los problemas.
+
+\section{Investigación}
+\textbf{Big data}\\\par
+ Big data se refiere a conjuntos de datos o combinaciones de conjuntos de datos cuyo tamaño (volumen), complejidad (variabilidad) y velocidad de crecimiento (velocidad) dificultan su captura, gestión, procesamiento o análisis mediante tecnologías y herramientas convencionales\\
+ \\ \textbf{¿Cómo se relacionan con las bases de datos?}\\\par
+ Debido al masivo volumen de datos, y a su estructura muy voluble, las bases de datos relacionales, tienen problemas en manejar este tipo de datos, , esto debido a que la mayoría de estos datos requiere un tratamiento, ya que suelen venir en formas muy impredecibles, las bases de datos relacionales son demasiado restrictivas para estos datos, por ello el concepto de base de datos NoSQL se ha desarrollado, para manejar esta nueva tendencia
+ \end{document}

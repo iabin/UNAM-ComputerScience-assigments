@@ -1,0 +1,128 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Tarea lenguajes 2}
+\author{Arteaga Hernández Alejandro Iabin}
+\date{Septiembre 2017}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+\subsection{C#}
+\begin{verbatim}
+//'t' es de ligado
+int t = 44;
+//'var' es de ligado 't' es ligada
+int var = t;
+//'i' es de ligado 
+int i = 0;
+//'a' es de ligado 'something' es libre
+Button a = new Button(something);
+//la primera i es ligada 
+for(i;i<t;i++){
+    // 'y' es de ligado 'var es ligada
+    int y = var;
+    //'k' es libre
+    Console.WriteLine(k);
+}
+\end{verbatim}
+\subsection{Php}
+\begin{verbatim}
+//'k' es de ligado 'r' es libre
+$k = $r;
+//'$query' es de ligado
+$query = "SELECT * FROM `articulo` ORDER BY fecha DESC";
+//'$res' es de ligado y '$query' es ligada
+$res = $this->con->query($query);
+//'$index' es de ligado
+$index = '';
+//'$i' es de ligado
+$i = 0;
+//'usuario' es de ligado 
+$usuario  = 4;
+//'$articulos' es de ligado 
+$articulos = array();
+//'$res' es ligada 'row' de ligado
+while($row = $res->fetch_array(MYSQLI_ASSOC)){
+    //'$index' es de ligado
+    $index .= "<div class='well'>";
+    //'$arreglo' es de ligado '$row' es ligada
+    $arreglo = explode(" ", $row['categoria_id']);
+    //'nombre' es de ligado y 'usuario' ligada
+    $nombre = $usuario->nombre;
+    //'fechaEs' de ligado 'row' ligada
+    $fechaEs = Article::fechaEs($row['fecha']);
+    }
+\end{verbatim}
+
+\section{}
+\begin{verbatim}
+{ with { x 4}
+    { with { x 5}
+        { with { f { fun { y } {+ x y }}}
+            { f 10}}}}
+\end{verbatim}
+Ben está equivocado, en este caso la evaluación estática y dinámica son las mismas (num 15), 
+pero si usaramos alcance dinámico con la evaluación mas vieja, sería (num 14) lo cual es diferente.\\\\
+    Esto pasa porque la evaluación dinámica es absoluta, siempre se lee desde el tope de la pila, sin importar el ambiente,mientras que
+la evaluación estática, es relativa, depende del ambiente totalmente, y la disposición de la llamada, por ende, es imposible,inferir alguna de la otra, ya que las evaluaciones 
+son independientes del ambiente.
+
+\section{}
+No tiene que violar la evaluación estática, como with es una función del lenguaje, puede verse de la forma 
+\begin{verbatim}
+    {parametros y funciones del objeto
+        {parametros del with }}
+\end{verbatim}
+De manera que cuando se crea la pila y se evalua estáticamente, primero entran los parametros y funciones del objeto, de manera que
+cuando las funciones dentro del with son ejecutadas, los parametros y funciones del with son alcanzables con alcance estático.
+\section{}
+Si el identificador no fue substituido en el algoritmo de substitución se le adhiere una connotación negativa, si la tiene, entonces es un identificador libre
+\section{}
+\subsection{}
+\begin{verbatim}
+    {with {x1 i}
+        {with {x2 i}
+            .
+            .
+            .
+                {with {xn i}
+                    {with {f {fun {y x} {+ x y}}}}
+                        {f x1 {f x2 {... {f xn-1 xn}}}}}}}
+
+ 
+\end{verbatim}
+\subsection{}
+Sustitución usando stacks,encontrar el primer elemento x1 desde f, toma n pasos, encontrar x2 toma n-1 pasos, encontrar x3 toma n-2 pasos, así hasta que encontrar xn toma 0 pasos, la suma de todos los pasos (n-1)+(n-2)+...+1+0 es de O($n^2$) como nos enseño nuestro amigo Gauss
+\section{}
+Supongamos que $|L|>|DL| $  sea   $ n = |L|$  \\  Como es un conjunto hay n diferentes elementos, una variable es ligada si está determinada
+por una definición anterior, que le asigna un valor, esto significa que por la definición, debe haber al menos n variables de ligado que le asignan valor
+a las n variables ligadas, lo cual es contradicción, por lo tanto $|L|\leq|DL|$\\\\\diamond
+\bibliographystyle{plain}
+\bibliography{references}
+
+\bibitem{C++} 
+FING – UDELAR  5 sept 2017
+\\\texttt{https://www.fing.edu.uy/~darosa/eval08Logica-de-predicados.pdf}
+
+\bibitem{php} 
+Brown  5 sept 2017
+\\\texttt{http://papl.cs.brown.edu/2014/Interpreting\_Functions.html\#\%28part.\_eager-lazy-subst\%29}
+
+\bibitem{php} 
+Etnasoft  5 sept 2017
+\\\texttt{http://www.etnassoft.com/2011/06/03/estudiando-la-funcion-width-en-javascript-y\\-el-porque-no-hay-que-usarla/}
+
+
+\end{document}
+
+
+f 10
+f {fun y {+ x y}}
+x 5
+x 4

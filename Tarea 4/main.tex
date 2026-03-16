@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\title{Tarea 4}
+\author{iabin Arteaga}
+\date{November 2017}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+
+
+Programar con continuaciones, también puede ser útil, cuando aquel que llama no quiere esperar hasta que la llamada sea completada, por ejemplo en una interfaz de usuario, una rutina puede asignar campos de texto y pasarlo, junto con una continuacion hacia el framework, esta llamada regresa inmediatamente, permitiendo al codigo de la aplicación continuar mientras el usuario interacciona con los campos de texto, una vez el usuario presiona el botón OK, el framework llama a la continuación, con los campos actualizados.
+
+Dado que una continuación puede verse como un subcaso de una callback, sería usada de una manera muy similar a la descrita 
+
+
+\begin{lstlisting}
+
+public CompletableFuture<Image> 
+downloadAndResize(String imageUrl, int width, int height) {
+    return CompletableFuture
+        .supplyAsync(() -> downloadImage(imageUrl))
+        .thenApplyAsync(x -> resizeImage(x, width, height));
+}
+
+private Image downloadImage(String url){
+    // Descarga la imagen de la url dada
+}
+
+private Image resizeImage(Image source, int width, int height){
+    redimensiona la imagen
+    }
+
+
+
+
+CompletableFuture<Image> imagePromise 
+= downloadAndResize("http://some/url", 300, 200);
+
+imagePromise.thenAccept(image -> {
+  //La imagen a sido cargada y puedes hacer con ella lo que quieras
+});
+\end{lstlisting}
+
+
+
+Desde java 8, está implementada CompletableFuture<T> que permite el uso de continuaciones
+
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+https://en.wikipedia.org/wiki/Continuation-passing_style\\ \\
+https://stackoverflow.com/questions/1456083/continuations-in-java
+\end{document}

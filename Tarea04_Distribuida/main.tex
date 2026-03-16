@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Computación Distribuida \\ Tarea 04}
+\author{Olea Olvera Marco Iván \\ Arteaga Hernández Alejandro Iabin}
+\date{}
+
+\usepackage[top=1.5cm, bottom=1.5cm, left=2cm, right=2cm]{geometry}
+\usepackage{fouriernc}
+\usepackage{amssymb}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
+
+\usepackage{graphicx}
+\graphicspath{{./}}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+
+\section{}
+
+Sea $\Pi = \{p_1,\ p_2,\ ...,\ p_n\}$ el conjunto de procesos. Supongamos que existe un protocolo que resuelve el problema (en particular, que se cumple \textit{acuerdo}). Este se diseña de tal manera que $p_1$ le manda un mensaje a los demás procesos avisando que decidirá 0. Pero como los canales de comunicación no son confiables, $p_1$ no tiene manera de saber si a los demás les llegó ese mensaje.
+
+Si el protocolo se diseña de tal manera que $p_i$, $i \not= 1$, le tiene que confirmar a $p_1$ que recibió su mensaje, entonces $p_i$ no tiene manera de saber que sí le llegará su mensaje de confirmación a $p_1$. Evidentemente, sin importar cuántas rondas de confirmación se realicen, es imposible que un proceso sepa con certeza que el último mensaje que envío sí fue recibido.
+
+Si existiera un protocolo que cumple \textit{acuerdo}, este se podría acortar eliminando el último mensaje enviado. Repitiendo esto iterativamente llegaríamos a un protocolo que no envía mensajes, es decir, un protocolo que cumple \textit{acuerdo} porque todos los procesos deciden un valor predeterminado, lo cual contradice el planteamiento del problema.
+
+\section{}
+
+En un sistema síncrono, cada proceso envía mensajes en un tiempo $t$ y estos mensajes son entregados en el tiempo $t+1$; a su vez, en el tiempo $t+1$ se envían mensajes que son entregados en el tiempo $t+2$ y así sucesivamente. En un sistema asíncrono los mensajes son entregados después de un retraso, el cual podría no estar acotado.
+
+Otra diferencia es que en los sistemas asíncronos no se garantiza que los mensajes se reciben en el mismo orden en que se envían.
+
+\section{}
+
+\section{}
+
+Las fuerzas de atracción gravitatoria que ejercen el Sol y la Luna sobre la Tierra causan la marea. \\ \\
+
+\end{document}

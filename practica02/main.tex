@@ -1,0 +1,149 @@
+\documentclass{article}
+\usepackage{karnaugh-map}
+\usepackage[utf8]{inputenc}
+\usepackage[table,xcdraw]{xcolor}
+\title{Práctica02}
+\author{Arteaga Hernández Alejandro Iabin\\Barocio Gomez Luis Fernando\\Olea Olvera Marco Ivan}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Ejercicios}
+1.-La lógica para resolver el ejercicio 1 fué, la siguente, si A es 0 entonces siempre se hace 1, si A es 1 entonces la implicación es 1 sii 
+B es 1\\\\
+2.-\\EJERCICIO 2
+\centering
+\label{my-label}
+\begin{tabular}{|c|c|c|c|}
+\hline
+x1 & x2 & x3 & primo \\ \hline
+0  & 0  & 0  & 0     \\ \hline
+0  & 0  & 1  & 0     \\ \hline
+0  & 1  & 0  & 1     \\ \hline
+0  & 1  & 1  & 1     \\ \hline
+1  & 0  & 0  & 0     \\ \hline
+1  & 0  & 1  & 1     \\ \hline
+1  & 1  & 0  & 0     \\ \hline
+1  & 1  & 1  & 1     \\ \hline
+\end{tabular}
+\\
+\begin{karnaugh-map}[4][2][1][$X_2X_3$][$X_1$]
+        \minterms{3,7,2,5}
+        \maxterms{0,1,4,6}
+        \indeterminants{}
+        \implicant{3}{2}
+        \implicant{5}{7}
+    \end{karnaugh-map}\\
+Mintérmino := $\overline{X_1}X_2 + X_1X_3 $\\
+
+\centering
+\caption{EJERCICIO 3}
+\label{my-label}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+x1 & x2 & y1 & y2 & x \textless y \\ \hline
+0  & 0  & 0  & 0  & 0             \\ \hline
+0  & 0  & 0  & 1  & 1             \\ \hline
+0  & 0  & 1  & 0  & 1             \\ \hline
+0  & 0  & 1  & 1  & 1             \\ \hline
+0  & 1  & 0  & 0  & 0             \\ \hline
+0  & 1  & 0  & 1  & 0             \\ \hline
+0  & 1  & 1  & 0  & 1             \\ \hline
+0  & 1  & 1  & 1  & 1             \\ \hline
+1  & 0  & 0  & 0  & 0             \\ \hline
+1  & 0  & 0  & 1  & 0             \\ \hline
+1  & 0  & 1  & 0  & 0             \\ \hline
+1  & 0  & 1  & 1  & 1             \\ \hline
+1  & 1  & 0  & 0  & 0             \\ \hline
+1  & 1  & 0  & 1  & 0             \\ \hline
+1  & 1  & 1  & 0  & 0             \\ \hline
+1  & 1  & 1  & 1  & 0             \\ \hline
+\end{tabular}
+
+ \begin{karnaugh-map}
+        \manualterms{0,1,1,1,0,0,1,1,0,0,0,1,0,0,0,0}
+        \implicant{1}{3}
+        \implicantedge{7}{6}{3}{2}
+        \implicantedge{3}{3}{11}{11}
+    \end{karnaugh-map}\\\\
+    Mintérminos := $\overline{X_1X_2} Y_2 + \overline{X_1}Y_1+\overline{X_2}Y_1Y_2 $\\\\
+    
+    
+
+\centering
+\caption{EJERCICIO 3 parte 2}
+\label{my-label}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+x1 & x2 & y1 & y2 & x = y \\ \hline
+0  & 0  & 0  & 0  & 1     \\ \hline
+0  & 0  & 0  & 1  & 0     \\ \hline
+0  & 0  & 1  & 0  & 0     \\ \hline
+0  & 0  & 1  & 1  & 0     \\ \hline
+0  & 1  & 0  & 0  & 0     \\ \hline
+0  & 1  & 0  & 1  & 1     \\ \hline
+0  & 1  & 1  & 0  & 0     \\ \hline
+0  & 1  & 1  & 1  & 0     \\ \hline
+1  & 0  & 0  & 0  & 0     \\ \hline
+1  & 0  & 0  & 1  & 0     \\ \hline
+1  & 0  & 1  & 0  & 1     \\ \hline
+1  & 0  & 1  & 1  & 0     \\ \hline
+1  & 1  & 0  & 0  & 0     \\ \hline
+1  & 1  & 0  & 1  & 0     \\ \hline
+1  & 1  & 1  & 0  & 0     \\ \hline
+1  & 1  & 1  & 1  & 1     \\ \hline
+\end{tabular}
+
+\\ \begin{karnaugh-map}
+        \manualterms{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1}
+    \end{karnaugh-map}\\\\
+    ¡No se pueden minimizar!\\
+    Mintérminos := $\overline{X_1X_2Y_1Y_2}  + \overline{X_1}X_2\overline{Y_1}Y_2+X_1\overline{X_2}Y_1\overline{Y_2}+X_1X_2Y_1Y_2 $\\\\
+    
+
+\centering
+\caption{EJERCICIO 4}
+\label{my-label}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+x1 & x2 & y1 & y2 & direccion & p1 & p2 \\ \hline
+0  & 0  & 0  & 0  & 0         & 0  & 0  \\ \hline
+0  & 0  & 0  & 1  & 1         & 0  & 0  \\ \hline
+0  & 0  & 1  & 0  & 1         & 1  & 0  \\ \hline
+0  & 0  & 1  & 1  & 1         & 1  & 1  \\ \hline
+0  & 1  & 0  & 0  & 0         & 0  & 1  \\ \hline
+0  & 1  & 0  & 1  & 0         & 0  & 0  \\ \hline
+0  & 1  & 1  & 0  & 1         & 0  & 1  \\ \hline
+0  & 1  & 1  & 1  & 1         & 1  & 0  \\ \hline
+1  & 0  & 0  & 0  & 0         & 1  & 0  \\ \hline
+1  & 0  & 0  & 1  & 0         & 0  & 1  \\ \hline
+1  & 0  & 1  & 0  & 0         & 1  & 0  \\ \hline
+1  & 0  & 1  & 1  & 1         & 0  & 1  \\ \hline
+1  & 1  & 0  & 0  & 0         & 1  & 1  \\ \hline
+1  & 1  & 0  & 1  & 0         & 1  & 0  \\ \hline
+1  & 1  & 1  & 0  & 0         & 0  & 1  \\ \hline
+1  & 1  & 1  & 1  & 0         & 0  & 1  \\ \hline
+\end{tabular}\\\\
+\\\\La reducción para saber si es mayor y saber si tengo que subir o bajar, ya la he hecho, por lo que solamente haré la reducción de la diferencia de pisos
+\begin{karnaugh-map}
+        \manualterms{0,0,1,1,0,0,0,1,1,0,0,0,1,1,0,0}
+        \implicant{3}{2}
+        \implicant{3}{7}
+        \implicant{12}{13}
+        \implicantedge{8}{8}{10}{10}
+\end{karnaugh-map}\\\\
+\begin{karnaugh-map}
+        \manualterms{0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0}
+         \implicantedge{1}{3}{9}{11}
+        \implicantedge{4}{12}{6}{14}
+\end{karnaugh-map}\\\\
+ Mintérminos digito 1 := $\overline{X_1X_2}Y_1  + \overline{X_1}Y_1Y_2+X_1\overline{X_2Y_2}+X_1X_2\overline{Y_1} $\\\\
+  Mintérminos digito 2 := $\overline{X_2}Y_2  +X_2 \overline{Y_2}$\\\\\\\
+\raggedright
+  
+  
+    
+    
+\end{document}

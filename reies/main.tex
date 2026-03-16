@@ -1,0 +1,62 @@
+
+\documentclass[12pt, letterpaper, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate} % enumerados
+
+\usepackage{float} % para usar [H]
+
+\title{Organizaci\'on y Arquitectura de computadoras Práctica 1}
+\author{José Fernando Reyes García}
+\date{18 de febrero de 2017}
+ 
+\begin{document}
+
+\maketitle
+
+Nombre del alumno: José Fernando Reyes García
+Datos de la computadora:
+\begin{itemize}
+\item Fabricante y modelo de la computadora:
+  
+  Hewlett Packard, HP Notebook .
+  
+\item Fabricante, modelo, frecuencia, número de núcleos, y arquitectura del procesador:
+  
+  AMD A8-7410 APU, 2.20GHz, 4 núcleos, 64 bits.
+  
+\item Capacidad de memoria RAM y de cachés de los procesadores:
+  
+  4 GB Memoria RAM, 2 MB memoria caché del procesador.
+    
+\item Capacidad del disco duro:
+  
+  1 TB de capacidad.
+  
+\item Distribución de linux y versión del kernel:
+  
+  Ubuntu 16.04, Kernel: 4.4.0-57-generic. 
+\end{itemize}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Nombre de la prueba & Resultado \\
+\hline \hline
+GZIP Compression & 30.56 Seconds \\ \hline
+DCRAW & 145.45 Seconds \\ \hline
+FLAC Audio Encoding & 21.75 Seconds \\ \hline
+GnuPG & 34.88 Seconds\\  \hline
+REDIS & 385728.07 Requests Per Second \\ \hline
+Timed MAFFT Alignment & 19.45 Seconds \\ \hline
+Timed MrBayes Analysis & 46.58 Seconds \\ \hline
+Timed M Player Compilation & 263.09 Seconds \\ \hline
+Timed PHP Compilation & 128.88 Seconds\\ \hline
+\end{tabular}
+\caption{Resultado de las pruebas}
+\label{tabla:sencilla}
+\end{center}
+\end{table}
+
+\end{document}
+

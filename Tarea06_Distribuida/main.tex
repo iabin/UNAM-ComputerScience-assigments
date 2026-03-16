@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Computación Distribuida \\ Tarea 06}
+\author{Olea Olvera Marco Iván \\ Arteaga Hernández Alejandro Iabin}
+\date{}
+
+\usepackage[top=1.5cm, bottom=1.5cm, left=2cm, right=2cm]{geometry}
+\usepackage{fouriernc}
+\usepackage{amssymb}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
+
+\usepackage{graphicx}
+\graphicspath{{./}}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+
+Sean $\phi_1$ y $\phi_2$ dos eventos en $\alpha$.
+
+\begin{itemize}
+
+    \item Supongamos que $\phi_1 \rightarrow \phi_2$. Queremos ver que $VC(\phi_1) < VC(\phi_2)$. Por la definición de la relación $\rightarrow$ (sucedió antes que), tenemos tres casos:
+    \begin{enumerate}
+        \item $\phi_1$ y $\phi_2$ son eventos del mismo procesador $p_i$ y $\phi_1$ ocurre antes que $\phi_2$ en $\alpha$. \\
+        Ninguna entrada de $VC_i$ puede decrecer, es decir, $VC(\phi_1)[j] \leq VC(\phi_2)[j]$ para toda $j$, y esto implica que $VC(\phi_1) \leq VC(\phi_2)$. Además, en particular, $VC(\phi_1)[i] < VC(\phi_2)[i]$ ya que $VC_i[i]$ incrementa en uno con cada evento de $p_i$, y $\phi_1$ ocurre antes que $\phi_2$. Por lo tanto, $VC(\phi_1) \not= VC(\phi_2)$ y esto significa que $VC(\phi_1) < VC(\phi_2)$.
+        \item $\phi_1$ es el evento en el que se manda un mensaje $m$ de $p_i$ a $p_j$, y $\phi_2$ es el evento en que $p_j$ recibe $m$. \\
+        Durante $\phi_2$, $p_j$ actualiza su vector de la siguiente manera: \\
+        $VC(\phi_2)[j] = max\{VC(\phi_1)[j],\ VC_j[j]\}$ \\
+        donde $VC_j$ es el vector de $j$ antes del evento $\phi_2$. Es decir, $VC(\phi_1) \leq VC(\phi_2)$. Luego, $p_j$ incrementa la j-ésima entrada del vector en uno, por lo que $VC(\phi_1) \not= VC(\phi_2)$. Por lo tanto, $VC(\phi_1) < VC(\phi_2)$.
+        \item Existe un evento $\phi$ tal que $\phi_1 \rightarrow \phi$ y $\phi \rightarrow \phi_2$. \\
+        Sin importar si $\phi$ es un evento del mismo procesador que $\phi_1$ (primer caso) o es el evento en el que otro procesador recibió un mensaje del procesador de $\phi_1$ (segundo caso), hemos probado que $VC(\phi_1) < VC(\phi)$. De manera similar, sabemos que $VC(\phi) < VC(\phi_2)$. Como el orden definido para los relojes vectoriales es un orden parcial, en particular se cumple transitividad. Por lo tanto, $VC(\phi_1) < VC(\phi_2)$.
+    \end{enumerate}
+    
+    \item Ahora supongamos que $VC(\phi_1) < VC(\phi_2)$ y veamos que $\phi_1 \rightarrow \phi_2$. \\
+    Sea $\phi_1$ un evento de $p_i$ y $\phi_2$ un evento de $p_j$. Tenemos dos casos:
+    \begin{enumerate}
+        \item $i = j$ (mismo procesador). \\
+        En particular tenemos que $VC(\phi_1)[i] \leq VC(\phi_2)[i]$ por hipótesis. Pero $VC(\phi_1)[i] \not= VC(\phi_2)[i]$ ya que la i-ésima entrada del vector $VC_i$ incrementa en uno con cada evento, por lo que necesariamente $VC(\phi_1)[i] < VC(\phi_2)[i]$. Como son del mismo procesador, esto sólo puede suceder si $\phi_1$ ocurre antes que $\phi_2$, es decir, $\phi_1 \rightarrow \phi_2$.
+        \item $i \not= j$. \\
+        En particular tenemos que $VC_i(\phi_1)[i] \leq VC_j(\phi_2)[i]$ por hipótesis. Además $VC_j(\phi_2)[i] \leq VC_i(\phi_1)[i]$ por la \textbf{Proposición 6.4} del libro de Hagit Attiya. En los enteros, esto implica que $VC_i(\phi_1)[i] = VC_j(\phi_2)[i]$. Pero la única forma en que $p_j$ pudo haber obtenido un valor para la i-ésima entrada de su vector que es al menos $VC_i(\phi_1)[i]$ es a través de una cadena de mensajes que originaron de $p_i$ en el evento $\phi_1$. Esto por definición significa que $\phi_1 \rightarrow \phi_2$.
+    \end{enumerate}
+    
+\end{itemize}
+
+\section{}
+
+Supongamos que el corte consistente maximal no es único, es decir, que existen dos cortes consistentes maximales $s_1$ y $s_2$ tales que $s_1 \not= s_2$. \\
+Por definición $s_1 \not< s_2$ (de lo contrario $s_1$ no sería maximal). Entonces tenemos dos casos:
+
+\begin{itemize}
+
+    \item $s_1 = s_2$. \\
+    Esto es una contradicción porque supusimos que $s_1 \not= s_2$.
+    
+    \item $\exists k \in \{0,\ 1,\ ...,\ n - 1\}$ tal que $s_1[k] > s_2[k]$. \\
+    Construimos otro corte $s$ de la siguiente manera: \\
+    \[s[j] = \left\{\begin{array}{lr}
+            s_1[j]\ \ \ si\ s_1[j] > s_2[j] \\
+            s_2[j]\ \ \ en\ otro\ caso
+            \end{array}\right\},\ \ \ para\ todo\ 0 \leq j \leq n - 1.\]
+    Probemos que $s$ es un corte consistente. Tenemos que ver que el ($s[i] + 1$)-ésimo evento de $p_i$ no sucede antes que el $s[j]$-ésimo evento de $p_j$, para toda $i$ y $j$.
+    Tenemos cuatro casos para el $i$-ésimo y $j$-ésimo elemento de $s$:
+    \begin{enumerate}
+        \item $s[i] = s_1[i]$ y $s[j] = s_1[j]$. \\
+        Claramente el ($s[i] + 1$)-ésimo evento de $p_i$ no sucede antes que el $s[j]$-ésimo evento de $p_j$ ya que $s_1$ es consistente.
+        \item $s[i] = s_2[i]$ y $s[j] = s_2[j]$. \\
+        Claramente el ($s[i] + 1$)-ésimo evento de $p_i$ no sucede antes que el $s[j]$-ésimo evento de $p_j$ ya que $s_2$ es consistente.
+        \item $s[i] = s_1[i]$ y $s[j] = s_2[j]$. \\
+        Supongamos que el ($s_1[i] + 1$)-ésimo evento de $p_i$ sucede antes que el $s_2[j]$-ésimo evento de $p_j$. Por la construcción de $s$, $s_2[i] < s_1[i]$, de donde $s_2[i] + 1 < s_1[i] + 1$. Esto implica que el $(s_2[i] + 1)$-ésimo evento de $p_i$ sucede antes que el $s_2[j]-ésimo$ evento de $p_j$, lo cual es una contradicción porque $s_2$ es consistente.
+        \item $s[i] = s_2[i]$ y $s[j] = s_1[j]$. \\
+        Supongamos que el ($s_2[i] + 1$)-ésimo evento de $p_i$ sucede antes que el $s_1[j]$-ésimo evento de $p_j$. Por la construcción de $s$, $s_1[i] \leq s_2[i]$, de donde $s_1[i] + 1 \leq s_2[i] + 1$. Esto implica que el $(s_1[i] + 1)$-ésimo evento de $p_i$ sucede antes que el $s_1[j]-ésimo$ evento de $p_j$, lo cual es una contradicción porque $s_1$ es consistente.
+    \end{enumerate}
+    Por lo tanto, $s$ es un corte consistente. \\
+    Como $s[j]$ se define como el máximo entre $s_1[j]$ y $s_2[j]$, entonces $s_1 \leq s$ y $s_2 \leq s$. Además $s_1 \not= s$ ya que si $s_1 = s$ esto implicaría que $s_2 < s_1$ ($s_1[j] > s_2[j]$ para toda $j$), lo cual no puede suceder porque $s_2$ es maximal. Luego, $s_2 \not= s$ porque sabemos que al menos $s[k] = s_1[k] > s_2[k]$. \\
+    En resumen, suponiendo que el corte consistente maximal no es único hemos construido un corte consistente $s$ tal que $s_1 < s$ y $s_2 < s$, lo cual contradice la suposición de que $s_1$ y $s_2$ son maximales. \\
+    Por lo tanto, el corte consistente maximal es único.
+    
+\end{itemize}
+
+\section{}
+
+Le pondré -1 si la línea pasa antes del primer evento (evento cero).
+
+\begin{itemize}
+    \item Primer corte: $s = [-1,\ -1,\ 0,\ 0]$. Es consistente porque no existen $i,j \in \{0,\ 1,\ 2,\ 3\}$ tales que $e_{i + 1, s[i] + 1}$ sucede antes que $e_{j, s[j]}$.
+    \item Segundo corte: $s = [-1,\ 0,\ 0,\ ]$
+\end{itemize}
+
+(Ya me confundí porque se supone que un corte es un n-vector, pero en el diagrama las curvas pasan múltiples veces por cada proceso.) \\
+
+Otra forma de determinar la consistencia es notando que si existe una flecha que comienza en el lado derecho de un corte y termina en el lado izquierdo, entonces el corte no es consistente. Dado esto, el primer y cuarto corte son consistentes, el segundo y tercero no lo son.
+
+\section{}
+
+En el instante en que le llega el mensaje de tomar un snapshot a $p_1$, los contadores de eventos son como sigue: \\
+$num_1 = 1$ (envió un mensaje) \\
+$num_2 = 0$ (aún no recibe el mensaje de $p_1$) \\
+$num_3 = 1$ (envió un mensaje) \\
+$num_4 = 0$ (aún no recibe el mensaje de $p_3$) \\
+Entonces $p_1$ fija $ans_1 = num_1 = 1$ y envía un marcador a los demás, y las respuestas quedan así: \\
+$ans_2 = 0$ \\
+$ans_3 = 1$ \\
+$ans_4 = 0$ \\
+Luego $p_2$ envía marcadores a los demás pero no hacen nada porque $ans_i$ ya está fijo. Es decir, se envían 12 marcadores en total. La respuesta (el corte) queda como $[1,\ 0,\ 1,\ 0]$.
+
+\end{document}

@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Computación Distribuida \\ Tarea 03}
+\author{Olea Olvera Marco Iván \\ Arteaga Hernández Iabin}
+\date{}
+
+\usepackage[top=1.5cm, bottom=1.5cm, left=2cm, right=2cm]{geometry}
+\usepackage{fouriernc}
+\usepackage{amssymb}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
+
+\usepackage{graphicx}
+\graphicspath{{./}}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+
+Sea $n$ el número de procesos. \\ \\
+\textbf{Terminación.} Solamente hay una ronda y termina cuando cada proceso $p_i$ haya mandado el par $(v_i,\ i)$ a todos sus vecinos. Es decir, $p_i$ decidirá algún valor después de $n - 1$ pasos (porque la gráfica es completa). \\ \\
+\textbf{Validez.} El arreglo $V_i$ fue inicializado con un valor no vacío $v_i$, el cual es la propuesta de $p_i$. El arreglo será modificado a lo largo de la ronda pero no se eliminarán valores, sólo se pueden agregar valores propuestos por otros procesos. Esto implica que al final de la única ronda, $V_i$ contendrá al menos un valor que fue propuesto por otro proceso. Por lo tanto, todos los procesos sin fallas decidirán un valor que fue propuesto por algún proceso. \\ \\
+\textbf{Acuerdo} Se cumple si no ocurren fallas, o si un proceso falla y envió cero o bien todos sus mensajes. Sea $a \in \{1,2,...,n\}$ el mínimo tal que $p_a$ envió todos sus mensajes. Entonces $V_i[a] = v_a$ para todo proceso correcto $p_i$. Por lo tanto, todos los procesos correctos decidirán $v_a$. \\
+
+\section{}
+
+Podría no funcionar si un proceso $p_a$ envió su mensaje a uno de sus vecinos pero falló antes de enviarlo al resto de sus vecinos. Si existe otro proceso $p_b$ con $b < a$ que sí logró enviar su mensaje a todos sus vecinos, el protocolo funcionará. Sin embargo, si $p_a$ fue el mínimo que envió al menos un mensaje, significa que el protocolo no funcionó porque los procesos que recibieron $(v_a,\ a)$ decidieron $v_a$ y los demás decidieron otra cosa.
+
+\section{}
+
+Si un proceso $p_a$ falla entonces se requiere de otra ronda para que aquellos que hayan recibido el mensaje de $p_a$ puedan reenviarlo a los demás procesos.
+
+Sí puede suceder que las $f$ fallas ocurran en la primera ronda y, por tanto, al terminar la segunda ronda llegarán a un acuerdo, pero esto sería el mejor caso. El peor caso es que ocurra una falla por ronda y consecuentemente la ronda $f + 1$ será la primera sin fallas. 
+
+Por lo tanto, es necesario ejecutar $f + 1$ rondas para garantizar que se llegará a un acuerdo.
+
+\section{}
+
+Recordatorio: Dado un proceso $p_i$, $R_i(r)$ es el conjunto de procesos de los cuales se recibió mensajes durante la ronda $r$. Por definición, $R_i(0) = \Pi$ para todo $i$. \\
+Además, $f$ es el número de fallas permitidas mientras que $t$ es el número real de procesos que fallaron. \\
+
+Por hipótesis de esta pregunta, $t = 0$. Lo único que se sabe de $f$ es que $f < n$. Por tanto tenemos dos casos:
+
+\begin{enumerate}
+    \item Si $f = 0$, entonces el protocolo termina en $f + 1 = 1$ ronda, según la descripción del algoritmo.
+    \item Si $f > 0$, entonces en la ronda $r = 1$ tenemos que $R_i(r) = R_i(1) = \Pi$ para todo $i$, ya que ningún proceso falla ($t = 0$). Pero $\Pi = R_i(0)$, de donde $R_i(r) = R_i(1) = R_i(0) = R_i(r - 1)$. Además como $r = 1 < f + 1$ (porque $f > 0$), entonces se prenderá la bandera que le indicará a $p_i$ que debe decidir al final de la ronda $r + 1 = 2$. \\
+    Por lo tanto, el protocolo termina en dos rondas.
+\end{enumerate}
+
+\end{document}

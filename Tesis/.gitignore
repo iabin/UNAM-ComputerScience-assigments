@@ -1,0 +1,5 @@
+*.aux
+*.fdb_talexmk
+*.fls
+*.log
+*.synctex.gz

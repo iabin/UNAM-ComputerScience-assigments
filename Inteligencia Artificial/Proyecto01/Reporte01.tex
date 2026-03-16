@@ -1,0 +1,309 @@
+\documentclass[12pt]{article}
+\usepackage[spanish]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Incluir imágenes en LaTeX
+\usepackage{color} % Para colorear texto
+\usepackage{subfigure} % Subfiguras
+\usepackage{float} %Posicionamiento [h] en figuras
+\usepackage{anysize} % Para personalizar el ancho de  los márgenes
+
+% Para agregar encabezado y pie de página
+\usepackage{fancyhdr} 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize Facultad de Ciencias} % Encabezado izquierda
+\fancyhead[R]{\footnotesize UNAM}   % Encabezado derecha
+\fancyfoot[C]{\thepage}  % Pie centro
+\fancyfoot[L]{\footnotesize Inteligencia Artificial}  % Pie izquierda
+\renewcommand{\footrulewidth}{0.4pt} % Linea horizontal
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+
+% ---------------------------------- PORTADA --------------------------------- %
+
+    \begin{center}
+        \begin{minipage}{0.48\textwidth} \begin{flushleft}
+        \includegraphics[scale = 0.18]{Proyecto01/Images/cnc.png}
+        \end{flushleft}\end{minipage}
+        \begin{minipage}{0.48\textwidth} \begin{flushright}
+        \includegraphics[scale = 0.25]{Proyecto01/Images/nam.png}
+        \end{flushright}\end{minipage}
+
+        \vspace*{-1.5cm}
+
+        \textsc{\Large Universidad Nacional \\Autónoma de México}\\[1.5cm]
+
+        \textsc{\LARGE Facultad de Ciencias}\\[3cm]
+
+        \vspace*{.5cm}
+
+        \HRule \\[0.7cm]
+        {\Large \bfseries Proyecto 1: Dron Autónomo}\\[0.4cm]
+        \HRule \\[1.5cm]
+
+        \vfill
+
+        \begin{minipage}{0.50\textwidth}
+            \begin{center} \large
+                \emph{Alumnos:}\\
+                Mijail Aron Álvarez Cerrillo
+                Alejandro Iabin Arteaga Hernández
+                José Fernando Reyes García
+                Alejandro Emmanuel Vargas Aldaco
+            \end{center}
+        \end{minipage}
+        %%% % [No quitar] - Espacio para alinear a la izquierda a los asesores %
+        \begin{minipage}{0.42\textwidth}
+            \begin{center} \large
+                \emph{Profesor:} \\
+                Gustavo De la Cruz Martínez\\
+                \emph{\\Ayudantes:}\\ 
+                Estefanía Prieto Larios\\
+                Osvaldo Baruch Acevedo Badillo\\
+                Rodrígo Eduardo Colín Rivera\\
+                
+            \end{center}
+        \end{minipage}
+        \vspace*{1cm}
+
+        \vspace{2cm}
+        \begin{center}
+            {\large 04 de Septiembre, 2019}
+        \end{center}                                                             
+    \end{center}
+
+\newpage
+
+\section{Introducción}
+En la actualidad la inteligencia artificial(IA) ha dado mucho de qué hablar, pero, ¿qué significa
+este término?, si nos ponemos a pensar sobre ello, se trata de la toma de decisiones fundamentales
+por parte de un equipo electrónico que es basado en interpretaciones las cuales son recibidas
+mediante sensores, cámaras, parámetros, y otros. El término de Inteligencia Artificial fue
+introducido originalmente por el científico estadounidense John McCarthy en el año de 1995.
+Cuando le preguntamos a alguien sobre IA, normalmente uno se hace la idea de robots muy
+sofisticados, completamente autónomos, imaginándonos a robots que son sacados de películas de
+ciencia ficción, un ejemplo de esto “Yo robot” sin embargo actualmente no es así, todavía nos falta
+largo camino por recorrer para llegar a crear este tipo de robots inteligentes.\\
+
+
+A lo largo de la historia se han seguido cuatro enfoques de IA:\\
+\begin{enumerate}
+    \item SISTEMAS QUE PIENSAN COMO HUMANOS:\\
+    \textit{El enfoque del modelo cognitivo (ciencia cognitiva)}\\
+    El nuevo y excitante esfuerzo de hacer que los ordenadores piensen... Máquinas con mentes, en el más amplio sentido literal. (haugeland,
+1985). La automatización de actividades que vinculamos con procesos de pensamiento humano, actividades como la toma de decisiones, resolución
+De problemas, aprendizaje... (bellman, 1918).
+    \item SISTEMAS QUE PIENSAN RACIONALMENTE:\\
+    \textit{El enfoque de las leyes de pensamiento
+(silogismo, lógica)}\\
+    El estudio de las facultades mentales mediante el
+Uso de modelos computacionales. (charniak y
+Mcdermotl 1985).
+
+El estudio de los cálculos que hacen posible
+Percibir, razonar y actuar. (winston. 1992).
+    \item SISTEMAS QUE ACTÚAN COMO HUMANOS:\\
+    \textit{El enfoque de la prueba de turing}\\
+    El arte de desarrollar máquinas con capacidad para realizar funciones que cuando son realizadas por personas requieren de
+inteligencia. (kurzweil, 1990).
+
+El estudio de cómo lograr que los computadores realicen tareas que, por el momento, los humanos hacen mejor. (Rich y
+Knight, 1991).
+    \item SISTEMAS QUE ACTÚAN RACIONALMENTE:\\
+    \textit{El enfoque del agente racional (agentes,
+percepción, acciones)}\\
+    La inteligencia computacional es el estudio del diseño de agentes inteligentes. (poole el al.. 1998).
+
+IA... Está relacionada con conductas inteligentes en artefactos. (nilsson, 1998).
+\end{enumerate}
+
+Los primero dos enfoques se refieren a los procesos mentales y al razonamiento
+mientras que los dos restantes aluden a la conducta. Las definiciones del enfoque 1 y 3 miden
+el éxito en términos de la fidelidad en la forma de actuar de los humanos, mientras que los enfoques 2 y 4 toman como referencia un concepto ideal de inteligencia, que llamaremos racionalidad.
+
+Hoy en día la IA la podemos encontrar por todas partes casi sin darnos cuenta un ejemplo
+podría ser cuando entramos a algún edificio y queremos usar el elevador al momento de oprimir el
+botón, realmente en ello hay una computadora que está tomando decisiones basadas en la posición
+actual del elevador, los pisos que se han asignados a visitar y cual está más cerca de ti. Otro ejemplo;
+en el sector de asistentes personales en los cuales los que más destacan son “Siri”, de Apple;
+“Cortana”, de Microsoft y “Google Assistant” de Google aparte de realizar tareas básicas, también
+pueden procesar cualquier pregunta que la hagamos hasta solicitudes complejas las cuales estas IA
+las analiza para entender lo que le estamos pidiendo y realizar esa tarea. Todo eso está hecho por
+supercomputadoras que procesan la información y en base a ello realizan la tarea.
+
+Por último, otro ejemplo sobre el cual se basará este proyecto es en un \textbf{dron automático} el cual
+realiza recorridos en un complejo de edificios de manera automática y autónoma, gracias al uso de sensores, puede saber dónde exactamente se encuentra un edificio y
+así evitarlo.
+
+\section{Sobre el agente}
+Un agente es cualquier cosa el cual inmerso en determinado medio ambiente se mantiene en
+constante observación de su entorno, haciendo uso de sensores para recibir entradas o respuestas
+mediante actuadores y en la cual este realiza la acción (o tarea) basándose en la entrada o
+percepciones recibidas, gracias a esto podemos decir que el agente comprende y entiende su
+entorno.
+
+Utilizaremos el termino percepción para indicar que nuestro dron puede recibir entradas
+en cualquier instante. Así mismo tenemos la secuencia de percepciones que refleja el historial de
+completo de lo que ha recibido el dron.\\
+
+
+\textbf{Racionalidad}\\
+
+Decimos que un agente (o sistema) es racional si hace “lo correcto” en función de su
+conocimiento, a lo largo de la historia hemos seguido cuatro enfoques las que refieren a
+procesos mentales, al razonamiento y por último a la conducta, la primera nos dice en la forma
+de actuar como humanos mientras que en la segunda nos da un enfoque hacia el concepto
+ideal de inteligencia la cual llamaremos racionalidad. Para la implementación del dron
+utilizaremos el enfoque de agente racional.\\
+
+\textbf{Actuar de forma racional: el enfoque del agente racional}\\
+
+Un agente inteligente es algo que razona en el caso de agentes informáticos esperamos que
+tengan atributos: controles autónomos que perciban su entorno, se adapten a los cambios y
+sean capaces de alcanzar objetivos diferentes, es decir, un agente es racional si actúa con la
+intención de tener un mejor resultado o cuando este de el mejor resultado más racional
+esperado.
+
+\section{Objetivo}
+Diseñar un dron autónomo que sirva para vigilancia para un complejo de edificios. El dron debe ser capaz de evitar choques, no quedarse sin batería ni estrellarse en el piso.
+
+\section{Definición de REAS}
+Primero, definamos el entorno de trabajo y el problema sobre el que se va a desenvolver el agente, el dron autónomo. El entorno es el complejo de edificios que va a recorrer el dron, por lo que lo clasificamos de la siguiente manera:
+
+\begin{itemize}
+    \item \textbf{Parcialmente Observable:} Ya que el dron, no tendrá acceso a otros medios más que sus propios sensores incluidos.
+    \item \textbf{Determinista}: Dado una misma situación, el dron actua de la misma manera. Por ejemplo, si topa de frente una pared, siempre gira 
+    \item \textbf{Episodico}: En cada toma de decision que realiza el dron, no se ve involucrado lo que hizo en la anterior.
+    \item \textbf{Estatico}: El entorno nunca se modifica.
+    \item \textbf{Continuo}: El agente tiene que ver activamente, en cada momento si hay un edificio frente, o a lado suyo.
+    \item \textbf{De Agente Individual}: El agente trabaja solo en el entorno.
+\end{itemize}
+
+Esto nos dirige a desarrollar un \emph{Agente Reactivo Simple}, que solo requiere conocer su entorno, y una serie de reglas que seguir para actuar con base en los datos recogidos del entorno.
+
+En cuanto a los \textbf{sensores} y \textbf{actuadores} tenemos lo siguiente:
+\begin{itemize}
+    \item Para poder ver su entorno, el agente hace uso de \textbf{rayos}, uno enfrente, y uno en cada lado. También tiene un \textbf{medidor de batería}, ya que se requiere de una fuente de alimentación portátil, que le permita moverse. Y es lo que basta en cuanto a sus sensores.
+    \item Sus actuadores son los componentes que le permiten \textbf{girar} y \textbf{avanzar}. Así como una \textbf{entrada de alimentación} de energía, que le permite recargar su batería para el momento en que este por agotarse la energía.
+\end{itemize}
+
+Lo descrito antes, se puede visualizar de igual manera en la siguiente tabla.
+
+\begin{table}[h]
+\begin{tabular}{|p{1.1cm}|p{4.5cm}|p{2.3cm}|p{2.5cm}|p{2.5cm}|}\hline
+Agente & Rendimiento & Entorno & Actuadores & Sensores \\ \hline\hline
+Dron   & \begin{tabular}[c]{@{}l@{}}Evitar choques, \\ no quedarse sin batería, \\ realizar su recorrido en \\ el perímetro,\\ no estrellarse en el piso\end{tabular} & \begin{tabular}[c]{@{}l@{}}Un complejo\\ de edificios.\end{tabular} & \begin{tabular}[c]{@{}l@{}}Avanzar, girar\\ izquierda, girar \\ derecha\end{tabular} & \begin{tabular}[c]{@{}l@{}}Rayo frontal, \\ rayos laterales,\\ medidor de \\carga de \\batería.\end{tabular} \\ \hline
+\end{tabular}
+\end{table}
+\newpage
+
+\section{Diseño e implementación}
+
+Usaremos un agente reactivo simple el cual mediante una serie de reglas podrá determinar
+hacia donde moverse sin impórtale las percepciones históricas.\\
+
+Para probar el diseño, se implementara toda la planeación de este proyecto en una simulación en Unity, una plataforma de desarrollo pensada para videojuegos, que nos permite modelar los componentes necesarios para realizar pruebas de cómo actua el dron que se ha diseñado.\\
+
+
+Se usará la regla de la mano derecha que consiste en poner nuestra mano derecha (también
+vale para la izquierda) apoyada a la pared, y andamos con la mano así hasta llegar a la "salida". Es
+importante que nunca quitemos la mano de la pared. Con una pequeña modificación , ya que el agente se mueve más rápido de lo que percibe su ambiente, por ende picos pronunciados, se separa de la pared, esto le permite a nuestro dron, explorar los terrenos alejados de las paredes, y aparte no lo deja perderse entre edificios, ya que su objetivo es que explore los terrenos abiertos. \\
+
+Se pensó en realiza un dron a fin de servir como vigilancia, por dicha razón nuestro dron esta concentrado en vigilar el perímetro del complejo y no tanto en meterse entre los edificios del complejo.\\
+
+En la parte de la simulación física, tratamos de usar la inercia que lleva el agente(dron) para que este no se quede pegado en las paredes de los edificios del complejo, y así cambie de dirección hacia otro lado para inspeccionar ese otro perímetro donde no hay pared.\\
+
+Respecto a la carga de nuestro drone, este intentará a un nivel medio, y si se encuentra cerca de su estación, intentará regresar a cargar su batería.\\
+
+Nuestro dron siempre va hacia adelante, si detecta una pared (sea de su lado izquierdo o derecho) con sus sensores entonces dará la vuelta hacia el lado que deje de detectar una pared, en ese constante movimiento siempre estará en loop buscando el cargador, si nuestra pila esta cargada sigue adelante, si nuestro dron busca el cargador y la pila esta pronto a acabarse entonces carga la batería, así repite todo el ciclo del diagrama de estados nuestro dron.\\
+
+\textbf{Sensores}\\
+La relación del mundo con nuestros sensores, o la interpretación semántica de cada sensor; Tenemos 3 rayos laterales, que nos permiten detectar si estamos cerca de algún obstáculo, sabemos que tenemos algo a nuestro lado o enfrente, de la misma manera, tenemos sensores de contacto, por si algo alcanza a hacer contacto con el dron, al igual que en todo momento tenemos acceso a nuestro nivel de batería, y tenemos guardado como variable estática la posición donde comenzamos, para volver a cargar la batería.
+
+\begin{itemize}
+    \item tocandopared: nos dice si estamos o no en contacto fisico con una pared
+    \item cercadepared: el radar nos alerta si estamos cerca de una pared, para no colisionar contra ella.
+    \item frentepared: nos dice si frente al dron hay una pared o no
+    \item paredleft/paredright: nos menciona si tenemos paredes a nuestros costados
+    \item tocandoBasura: regresa un booleano el cual nos especifica si estamos tocando o no basura
+    \item cercaDeBasura: el radar nos indica si estamos cerca de basura
+    \item bateria: nos indica el nivel de bateria
+\end{itemize}
+\textbf{Actuadores}\\
+\begin{itemize}
+    \item Los actuadores pertinentes al dron que nosotros hicimos son:\\
+    \item Ascender: Este actuador eleva el dron en dirección vertical\\
+    \item Descender: Disminuye la elevación del dron.\\
+    \item Flotar: Ejerce una fuerza N inversamente equivalente a la fuerza de gravedad para mantener al dron en el aire.\\
+    \item Adelante:Se mueve hacia el frente relativo al dron.\\
+    \item Atrás: Se mueve hacía atrás.\\
+    \item Derecha e izquierda: se mueve hacía los lados respectivamente sin girar.\\
+    \item Girar: Gira hacía la derecha o izquierda respectivamente, rota sobre su eje el dron.\\
+    \item Detener:Se detiene de todo movimiento.\\
+    \item Cargar batería: Comienza a cargar la batería.\\
+    \item Mover Hacía: Dado un punto el drone lo intetará alcanzar.\\
+\end{itemize}
+
+
+
+\begin{figure}[tph]
+  \centering
+  \includegraphics[width=\textwidth]{Proyecto01/Images/diagrama.png}
+  \caption*{Diagrama de estados del Dron}
+\end{figure}
+
+\newpage
+\section{Ventajas & Desventajas}
+\textbf{Ventajas}\\
+    Al ser un agente basado en reglas, tiene un comportamiento predecible, si se conocen las reglas\\
+    No es difícil de implementar\\
+    Es determinista ante las misma entrada o ante el mismo ambiente.\\
+    Requiere poca capacidad de cálculo, debido a la simplicidad de las reglas\\
+\textbf{Desventajas}\\
+
+Poco eficiente, al no tener percepciones históricas, el dron puede repetir comportamientos realizados\\
+No puede aprender de su entorno, ya que pasada tras pasada realizará la misma acción.\\
+Percibe su entorno pero no aprende de él, por ello puede cometer errores múltiples veces.
+\begin{itemize}
+    \item La complejidad depende del recorrido que realiza en este caso como, no guarda
+percepciones históricas siempre tendrá que recorrer el mismo lugar en algún momento
+por lo que el recorrido no es el más óptimo.
+    \item No tiene la capacidad de aprender el entorno debido a la carencia de estados.
+    \item Puede existir un entorno en el cual no sea efectivo la regla de la mano derecha.
+    \item En el peor de los casos puede que nunca termine de limpiar el lugar.
+\end{itemize}
+
+\section{Conclusiones}
+
+Con el avance de la inteligencia artificial se ha logrado que un agente sea capaz de desarrollar
+conocimiento muy específico siendo este capaz de simular los procesos el hombre realiza, sin
+embargo aún no se ha llegado a desarrollar un agente que piense y actué como un humano,
+aunque en nuestra opinión aún estamos un poco lejos debido al que el hombre cuenta con una
+característica única que es el sentido común.\\
+
+Los sistemas de IA actualmente forman parte en muchos campos y se ha usado en gran
+variedad de aplicaciones de software, juegos de estrategia como ajedrez de computador y otros
+videojuegos en nuestro caso se usó con la finalidad de implementar un agente reactivo simple con
+propia autonomía.\\
+
+Para la implementación de nuestro agente nos percatamos que no solo puede tener un entorno si
+no varios entornos así mismo de su correcto diseño depende también el correcto funcionamiento
+del agente y que éste pueda alcanzar los objetivos que en un principio fueron planteados.
+
+
+Ahora aún controlados por humanos, los drones del futuro serán controlados por inteligencia artificial. La IA permite que los drones y otras máquinas tomen decisiones y operen por su cuenta en su nombre. Pero una máquina que sea capaz de tomar decisiones y aprender a trabajar independientemente podría causar más daño que bien y afectar a la sociedad.
+
+\section{Referencias}
+
+\begin{itemize}
+    \item "Inteligencia Artificial: Un enfoque moderno (Introducción)" de Russell & Norvig 2a. edición
+    \item https://es.wikipedia.org/wiki/Agente\_inteligente\_(inteligencia\_artificial)#Clasificaci%C3%B3
+n (10/Febrero/2018)
+    \item Julián, V. Botti. 2000. Agentes Inteligentes: el siguiente paso en la Inteligencia Artificial. Dpto.
+sistemas Informáticos y Computación Universidad Politécnica de Valencia.
+    \item Unity AI Programming Essentials de Curtis Bennett, PACKT publishing 
+    \item https://dzone.com/articles/the-future-of-drones-in-artificial-intelligence
+\end{itemize}
+\end{document}

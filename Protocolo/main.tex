@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{El problema del clique máximo}
+\author{Arteaga Hernández Alejandro Iabin}
+\date{UNAM Diciembre 2017}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducción}
+Dada una gráfica no dirigida, un clique es un subconjunto de vértices, tal que para cualesquiera dos elementos v,u del subconjunto, v y u son adyacentes en la gráfica, eso quiere decir que la gráfica inducida de este subconjunto de vértices, es una gráfica completa. Encontrar el clique de tamaño máximo dada una gráfica, es un problema NP-Duro, llamado el problema del clique máximo ("The maximum clique problem"), encontrar estos cliques es de importancia, ya que está relacionado íntimamente con la cobertura de vértices (vertex covers) y conjuntos independientes.\\
+
+Algunas de las aplicaciones de este problema son
+\begin{itemize}
+   \item Patrones en el tráfico de telecomunicaciones
+   \item Diseño de correctores de código
+   \item Problemas geométricos, (La conjetura de Keller)
+   \item Visión computacional y reconocimiento de patrones
+   \\
+\end{itemize}  
+
+\\Este problema fue uno de los originales veintiún problemas NP-Duros enumerados por Karp en 1972, para encontrar el clique máximo, se podrían inspeccionar todos los posibles subconjuntos, aunque esta búsqueda por fuerza bruta, deja de ser práctica para gráficas con más de algunas docenas de vértices. Aunque no exista un algoritmo polinomial conocido para este problema, existen algoritmos un poco más eficientes que la fuerza bruta.\\
+
+    Acerca de los intentos por resolver este problema se han desarrollado diversos
+algoritmos. El algoritmo de Tarjan y Trojanowsky (1977) resuelve el problema en 
+$O(2^{\frac{n}{3}})$, Jian (1986) lo mejoró a $O(2^{0.304n})$, Robson (1986) lo mejoró a $2^{0.276n}$ aunque a un costo de mayor memoria. El algoritmos de Robson combina un un esquema de backtracking y programación dinámica, el mejor algoritmo conocido es una versión refinada de ese algoritmos Robson(2001) que corre en tiempo $O(2^{0.249n})$\\
+
+    Además del desarrollo de algoritmos, ha habido una exhaustiva búsqueda de
+heurísticas y meta-heurísticas para evitar el peor caso en las complejidades.
+\section{Hipótesis}
+Se busca implementar un algoritmo genético simple, con elitismo, que implemente algún grado de búsqueda local y ver la velocidad de convergencia del algoritmo, se comparará con algoritmos deterministas y se espera que encuentre una solución aceptable en un tiempo mucho menor.Se espera ver de manera experimental, la ventaja de usar una meta-heurística en cuestión de la relación costo-resultado.
+\\
+    Es una estrategia que no se ha probado, ya que en general se suelen usar,
+heurísticas muy específicas para resolver el problema, y acerca de las meta-heurísticas, los algoritmos genéticos, para este problema en particular,son los que menor uso han tenido, por lo tanto, los resultados y aprendizajes que se tienen de ellos sobre este problema en específico, son cortos y muy generales. 
+
+\section{Metodología}
+
+Se usarán el conjunto de benchmarks del DIMACS, que incluyen una gran variedad y tipos de gráficas, se probarán varios benchmarks con una cantidad de nodos, que va de los 30 a los 2000 y hasta 1,000,000 de aristas de las cuales ya se conoce el clique máximo, se compararán en número de iteraciones, con los algoritmos deterministas descritos en la introducción, y se comprará el costo-resultado de los algoritmos, además de calcular la velocidad de convergencia hacía algún máximo que podría ser local pero una solución aceptable.
+
+    Además de comparar el costo y la mejor solución otorgada con otras meta-heurísticas, se verá si como solución, el uso de algoritmos genéticos es viable en este problema.
+    
+Los parámetros del algoritmos, serán 
+    \begin{itemize}
+        \item Probabilidad de cruza
+        \item Probabilidad de mutación
+        \item Elitismo
+        \item Activar o no mecanismos de búsqueda local
+        \item El método de selección
+    \end{itemize}
+
+
+\begin{thebibliography}{}
+\bibitem{knuthwebsite} 
+Wikipedia:Clique problem
+\\\texttt{https://en.wikipedia.org/wiki/Clique\_problem#CITEREFJian1986}
+
+
+\bibitem{latexcompanion} 
+J. Jeffry Howbert and Jacki Roberts 
+\textit{The Maximum Clique Problem}. 
+CSEP 521 Applied Algorithm 2007.
+
+\bibitem{latexcompanion} 
+Karp, Richard M.
+\textit{"Reducibility among combinatorial problems"}. 
+ (1972), , in Miller, R. E.; Thatcher, J. W
+ 
+ 
+
+\bibitem{knuthwebsite} 
+Dimacs benchmark set
+\\\texttt{ http://iridia.ulb.ac.be/~fmascia/maximum\_clique/DIMACS-benchmark#detC125.9}
+
+
+
+
+\end{thebibliography}
+
+\end{document}

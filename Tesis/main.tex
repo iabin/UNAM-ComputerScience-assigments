@@ -1,0 +1,59 @@
+\documentclass[12pt, twoside]{report} %Tamaño de letra 12, tipo report y hago que sea a doble pagina, queda bonito
+%si se imprime como libro a 2 lados, 
+\usepackage[utf8]{inputenc} %UTF8 para caracteres 
+\usepackage{graphicx}       %Paquete para insertar imágenes
+\graphicspath{{images/}}  %Directorio de las imágenes 
+\usepackage[a4paper, width=145mm, top=25mm, bottom=25mm, bindingoffset=6mm]{geometry}
+%Tamaño del papel a4, anchura del texto 145mm , margenes top, bottom de 25mm
+%offset para que no sea tan marcado el hecho de que los margenes están disparejos para que en modo doble lado se vea
+%bonito
+%\usepackage[spanish, mexico]{babel} %Idioma español de lo autogenerado
+\usepackage{fancyhdr}%Agrega headers y footers
+
+
+\setlength{\headheight}{15.09pt}
+
+\title{
+    {Análisis y procesamiento de metadatos geográficos para su 
+    uso y explotación}\\
+    {\large Facultad de Ciencias, UNAM}\\
+    {\includegraphics[scale=0.15]{portada/escudo.png}}
+}
+\author{Alejandro Iabin Arteaga Hernández}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{Overleaf}
+\fancyhead[RE,LO]{Guides and tutorials}
+\fancyfoot[CE,CO]{\rightmark}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\begin{document}
+
+    \maketitle
+
+        \tableofcontents
+
+
+    \chapter*{Síntesis}
+    \input{chapters/lorem.tex}
+    \chapter*{Dedicatoria}
+    \input{chapters/lorem.tex}
+    \chapter*{Agradecimientos}
+    \input{chapters/lorem.tex}
+    
+
+
+    \chapter*{Introducción}
+    \input{chapters/lorem.tex}
+    \section*{Hola}
+    \input{chapters/lorem.tex}
+    
+    \chapter*{Antecedentes}
+    \input{chapters/lorem.tex}
+    \chapter*{Desarrollo}
+    \input{chapters/lorem.tex}
+
+\end{document}

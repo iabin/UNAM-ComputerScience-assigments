@@ -1,0 +1,142 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+
+
+
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	MAIN PART
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+\title{Redes definidas por software SDN} % Title
+\author{Arteaga Hernández Alejandro}
+\date{\today} % Date for the report
+\maketitle
+
+
+
+\begin{abstract}
+Las redes definidas por software (SDN) utilizan software en lugar de dispositivos especializados para el aprovisionamiento y la gestión de los servicios de aplicaciones y de red, lo que permite la movilidad y la entrega de aplicaciones programables, escalables y bajo demanda. Los sistemas de SDN centralizados automatizan la configuración y el aprovisionamiento de toda la estructura de red sin verse condicionados por las limitaciones del hardware. Las SDN supervisan de manera inteligente y adaptan automáticamente la red para adaptarse mejor a las condiciones actuales.
+\\\\
+\textbf{\textit{“Una red definida por software es una arquitectura emergente que es dinámica, administrable, rentable,
+y adaptable, lo cual la hace ideal para naturaleza dinámica y de alto consumo de ancho de banda de las
+aplicaciones de hoy en día. Esta arquitectura separa las funciones control y de envío de paquetes de la
+red, permitiendo que el control de la red sea directamente programable y que la infraestructura
+subyacente pueda ser abstraída para las aplicaciones y los servicios de red.”}}
+
+\end{abstract}
+
+\section{¿Cómo se diferencian con las redes tradicionales?}
+{
+En un router o switch clásico el envío de paquetes (data path) y las decisiones de enrutamiento a alto nivel (control path) se suceden dentro del mismo dispositivo. En un entorno de red virtualizado un switch, por ejemplo, separaría estas dos funciones; la parte de envío de paquetes todavía reside en el switch mientras que las decisiones de enrutamiento se separan a un nuevo controlador, el switch y el controlador se comunican mediante protocolos/componentes que resumiré más adelante, de modo que se crea una abstracción del hardware que nos permite mayor flexibilidad de administración y menor dependencia de la parte física.
+}
+
+\section{¿Qué son?}
+{
+Las redes definidas por software (SDN) son una manera de abordar la creación de redes
+en la cual el control se desprende del hardware y se le da el mismo a una aplicación de
+software llamada controlador. El término SDN (Software Defined Network o red definida
+por software) se ha venido acuñando en los últimos dos años para hacer referencia a una
+arquitectura de red que permite separar el plano del control, del plano de datos, para
+conseguir redes más programables, automatizables y flexibles. Con SDN se virtualiza la
+red independizándola de la infraestructura física subyacente
+La tecnología SDN elimina la inteligencia de las redes tradicionales del hardware,
+delegando las capacidades de toma de decisiones en el servidor. La tecnología
+desacopla la capa de datos (data layer: información real que viaja en una red) de la capa
+de control (control layer: la tecnología que determina cómo, cuándo y dónde la
+información flujos), y cada capa está automatizada. Esto significa que el control
+independiente de cada capa es posible sin el costoso y complicado hardware y software
+(por ejemplo, routers y switches) o la necesidad de profesionales altamente calificados
+para gestionar dichos dispositivos. 
+
+}
+
+\section{¿Por qué usar SDN?}
+
+{
+Las redes definidas por software permiten una gestión de red estratégica y centralizada. Protegen la red, mantienen el flujo de tráfico sin problemas, solucionan problemas al instante, aceleran la entrega de aplicaciones, reducen los costes y aumentan la flexibilidad de recursos desde un solo panel sin tener que tocar siquiera un conmutador. Ayudan a innovar nuevas aplicaciones, servicios y flujos de ingresos, reducen la necesidad de utilizar hardware de diseño específico (y reducen también los costes y las limitaciones concomitantes) al tiempo que permiten que los costes estén basados en el consumo.
+}
+\includegraphics[]{Capture.PNG}
+\section{¿Por qué son importantes?}
+{
+Como mencionamos anteriormente, las redes actuales no están preparadas para afrontar una serie situaciones
+cada vez mas comúnes tales como: cambios en los patrones de uso de la red debido a los usuarios móviles con
+nuevas aplicaciones, despliegue de nuevos servicios, y ampliaciones o cambios de topología de la red. Tampoco
+éstas son fácilmente administrables ni adaptables a situaciones inesperadas a las que están sujetas las redes
+empresariales actualmente (ataques, falla de dispositivos de la red, etc.). Todo esto conduce a gastos excesivos
+en la operación de éstas debido a constantes reprogramaciones de los dispositivos de la red para afrontar estos
+cambios o situaciones. También, el mantener compatibilidad tecnológica o de marca en los dispositivos de red, a
+veces contribuye a elevados costos de inversión para renovación tecnológica o ampliaciones de la red.
+Por otro lado, las redes definidas por software tienen una serie de ventajas que eliminan o minimizan la
+mayoría de los problemas de las redes tradicionales. Algunas de las más importantes son:\\\\
+• Control y administración centralizada de los dispositivos red.\\\\
+• Una red ágil y flexible que puede adaptarse automáticamente a través del uso de interfaces de software
+comunes.\\\\
+• Mayor confiabilidad debido a las anteriores características.\\\\
+• Mucho mayor rapidez para la innovación y la improvisación debido a que los cambios son hechos en
+software y no en el hardware.\\\\
+• Facilidad para implementar funciones complejas de red a través del uso de algoritmos definidos por los
+usuarios e implementados en software en el controlador.\\\\
+• Despliegue rápido de nuevas características de la red.\\\\
+• Mayor eficiencia en la utilización de los recursos de la red.\\\\
+• Independencia de marca de fabricante en los dispositivos de red. Dado que la inteligencia de la red está
+centralizada en el controlador y los dispositivos de red son solamente manejadores de los flujos de datos,\\\\
+estos pueden provenir de múltiples fabricantes.
+Por todo lo anterior, las redes definidas por software permiten el diseño y la implementación de redes que se
+ajustan las necesidades de los usuarios y no al revés, por lo que su importancia queda ampliamente demostrada.
+}
+\section{Riesgos y desventajas}
+{
+Como toda nueva tecnología, las redes definidas por software traen su propio set de problemas. Para
+empezar, este nuevo paradigma está en pleno desarrollo y por lo tanto muchas de sus funciones aún no están
+completamente definidas o entendidas. Esto es normal para una nueva tecnología y se irá resolviendo conforme
+la tecnología vaya madurando y la base instalada aumente. Para continuar, habrá necesidad de capacitar y
+entrenar al personal de TI en el uso de esta nueva tecnología. Además de esto y de acuerdo a los resultados de la
+encuesta realizada por la empresa Gigaom Research, los encuestados enumeraron las áreas de mayor
+preocupación de las soluciones actuales de SDN’s que a continuación se enlistan.\\\\
+1. Los gastos asociados con nuevo hardware y sistemas de software.\\\\
+2. La falta de interoperabilidad comprobada de las soluciones existentes.\\\\
+3. Características y funciones inconsistentes de las distintas soluciones.\\\\
+4. La falta de confiabilidad y desempeño comprobada de las soluciones actuales.\\\\
+}
+
+\section{Conclusión}
+{
+Durante las últimas semanas hemos hablando en este Blog de Redes Definidas por Software SDN (del inglés Software Defined Networks), veamos un poco más detenidamente en qué consiste esta tecnología, como he comentado en el anterior posts, es la pieza que completa el stack de virtualización en Cloud Computing.\\\\
+
+SDN tiene el potencial de cambiar la industria de networking tal como hoy la conocemos; los dispositivos de red se convertirán en algo más simple ejecutando a su vez software más complejo con abstracción de hardware. Sin duda implica cambios en la manera como se administran actualmente las Redes y como se comercializarán los propios dispositivos: routers, switches, access points, etc.
+\\\\
+SDN es una realidad y las compañías líderes en la industria van adoptando ya estas tecnologías. Mientras se producen movimientos en el mercado, adquisiciones de empresas, con el objetivo de posicionarse y ofrecer un buen portafolio de soluciones.
+}
+%----------------------------------------------------------------------------------------
+%	Bibliography
+%----------------------------------------------------------------------------------------
+\bibliography{bibliography/sample}
+{
+Web: https://searchdatacenter.techtarget.com/es/definicion/Redes-definidas-por-software-SDN\\
+Accesado 8-12-2018\\\\
+Web: https://www.conaic.net/revista/publicaciones/ANIEI2015Articulo\%208.pdf \\
+Accesado 8-12-2018\\\\
+Web: https://es.wikipedia.org/wiki/Redes_definidas_por_software\\
+Accesado 8-12-2018\\\\
+Web: https://articulosit.files.wordpress.com/2013/10/sdn.pdf\\
+Accesado 8-12-2018\\\\
+}
+
+
+
+\bibliographystyle{plain}
+
+\end{document}

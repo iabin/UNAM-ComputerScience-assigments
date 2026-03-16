@@ -61,7 +61,7 @@
         
         \item Toda la información de los clientes del banco que tiene una cuenta, un préstamo o ambas y que vivan en \textbf{CHIAPAS}.
         
-        $\pi$ idcliente, nombrecliente, direccion, estado, nacimiento ($\sigma$ numprestamo $\neq$ null $\lor$ numcta $\neq$ null ($\sigma$ estado = 'CHIAPAS' cliente \bowtie prestatario \bowtie ctacliente))
+        $\pi\ idcliente,\ nombrecliente,\ direccion,\ estado,\ nacimiento\ (\sigma\ numprestamo \neq null \lor numcta \neq null\ (\sigma\ estado = 'CHIAPAS'\ (cliente \bowtie prestatario \bowtie ctacliente)))$
         
         \begin{center}
             \includegraphics[scale=0.5]{3.jpg}
@@ -69,7 +69,7 @@
         
         \item Relación de los clientes que \textbf{tienen un crédito} con importe mayor o igual a \textbf{\$80,000.00} pero \textbf{no tienen ninguna cuenta en el banco}. Mostrar el \textbf{idcliente, nombre del cliente, número de préstamo e importe}
         
-        $\pi$ idcliente, nombrecliente, numprestamo, importe ($\sigma$ importe $\geq$ 80000 $\land$ numcta = null (cliente \bowtie prestatario \bowtie prestamo \bowtie ctacliente))
+        $\pi\ idcliente,\ nombrecliente,\ numprestamo,\ importe\ (\sigma\ importe \geq 80000 \land numcta = null\ (cliente \bowtie prestatario \bowtie prestamo \bowtie ctacliente))$
         
         \begin{center}
             \includegraphics[scale=0.5]{4.jpg}
@@ -109,7 +109,7 @@
         
         \item Toda la información de los clientes que tienen solo cuenta y aquellos que tienen solo préstamo en el banco.
         
-        $\pi$ idcliente, nombrecliente, direccion, estado, nacimiento $\sigma$ numprestamo $\neq$ null xor numcta $\neq$ null (cliente \bowtie prestatario \bowtie ctacliente)
+        $\pi\ idcliente,\ nombrecliente,\ direccion,\ estado,\ nacimiento\ \sigma\ numprestamo \neq null\ xor\ numcta \neq null\ (cliente \bowtie prestatario \bowtie ctacliente)$
         
         \begin{center}
             \includegraphics[scale=0.5]{9.jpg}

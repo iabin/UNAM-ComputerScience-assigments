@@ -114,11 +114,11 @@
 
 {La práctica tiene un conjunto de pruebas, de tal manera que cuando ejecutes y compiles el programa, la terminal te dirá qué métodos están mal.}
 
-{\includegraphics{images/image1.png}}
+\IfFileExists{images/image1.png}{\includegraphics{images/image1.png}}{}
 
 {Cuando tus métodos pasen las pruebas, y vuelvas a ejecutar el programa, igual la terminal te lo dirá.}
 
-{\includegraphics{images/image2.png}}
+\IfFileExists{images/image2.png}{\includegraphics{images/image2.png}}{}
 
 {}
 
@@ -132,17 +132,14 @@
 
 {El repositorio se vería similar a esto.}
 
-{./}
-
-{~\textbar{}── practica01}
-
-{~\textbar{}── practica02}
-
-{~\textbar{} ~ ~ ~ ~ ~ ~└──README.txt}
-
-{~\textbar{} ~ ~~~~~~~~~└── }{IntAndString.java }
-
-{└── README.txt}
+\begin{verbatim}
+./
+|-- practica01
+|-- practica02
+|   |-- README.txt
+|   `-- IntAndString.java
+`-- README.txt
+\end{verbatim}
 
 {}
 

@@ -1,0 +1,13 @@
+\frametitle{Antecedentes}
+Las redes no han cambiado hace unos 30 años a diferencia
+de los programas, estamos enfrentando un cambio de
+paradigma al cual debemos adecuarnos.
+• El desarrollo de las SDN se iniciaron a partir de 1990, donde
+se incluye funciones programables en la red, en el 2001-
+2007, se separó el plano de control y de datos mejorando
+con esta innovación, a partir del 2007-2010, se implementa
+los API OpenFlow, se presenta como una interfaz abierta,
+presenta diversas maneras la separación del plano de control
+y de datos para que sea escalable, práctica donde
+virtualización jugó un rol importante en esta evolución de
+SDN.
